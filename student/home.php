@@ -97,7 +97,7 @@
 																 <h4><?php echo $row2['post_title'];?>
 																 <i class="icon-action-redo font-blue"></i>
 																 <div class="profile-usertitle-job btn btn-circle green-haze btn-sm">
-																 <?php echo $subject;?> - <?php echo $cys;?>
+																 <a href="view_group.php?gid=<?php echo $gid;?>"><?php echo $subject;?> - <?php echo $cys;?></a>
 																	</div>
 																 </h4>
 																 <p><?php echo $row2['post_content'];?></p>
@@ -106,6 +106,8 @@
 	
 	$query2=mysqli_query($con,"select * from post where post_id='$pid'")or die(mysqli_error());
 		$row1=mysqli_fetch_array($query2);
+
+		$mid=$row1['member_id'];
 				$file="../uploads/$row1[post_file]";
 				$ext = pathinfo($file, PATHINFO_EXTENSION);	
 				include("ext.php");	

@@ -99,7 +99,7 @@ $query=mysqli_query($con,"select * from `group_post` natural join post natural j
 													$query2=mysqli_query($con,"select * from post where post_id='$pid'")or die(mysqli_error());
 														$row1=mysqli_fetch_array($query2);
 																$file="../uploads/$row2[post_file]";
-
+																$pid=$row1['post_id'];
 																$ext = pathinfo($file, PATHINFO_EXTENSION);	
 																include("ext.php");	
 															
@@ -167,7 +167,7 @@ $query=mysqli_query($con,"select * from `group_post` natural join post natural j
 											<!-- BEGIN Note-->
 											<div class="note note-info">
 												<p>
-												 <a  data-placement="bottom" title="Download" id="<?php echo $row1['upload_id']; ?>Download" href="../images/<?php echo $row1['post_file']; ?>">
+												 <a  data-placement="bottom" title="Download" id="<?php echo $row1['upload_id']; ?>Download" href="../uploads/<?php echo $row1['post_file']; ?>">
 													<img class="attachment-img" src="../images/<?php echo $display; ?>" alt="attachment image" style="width:50px">
 														<?php echo $row1['post_file'];
 															
@@ -190,6 +190,7 @@ $query=mysqli_query($con,"select * from `group_post` natural join post natural j
 								<input type="hidden" value="<?php echo $gid;?>" name="gid">
 								<input type="hidden" value="<?php echo $member_id;?>" name="member_id">
 								<input type="hidden" value="<?php echo $row3['grade_id'];?>" name="grade_id">
+								<input type="hidden" value="<?php echo $pid;?>" name="pid">
 							 </div>
 							 <div class="box-tools col-md-3  col-xs-6">			
 								<input type="text" class="form-control" placeholder="Total" value="<?php echo $row2['points'];?>" name="total" readonly>

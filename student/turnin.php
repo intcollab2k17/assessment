@@ -52,7 +52,9 @@
 											<div class="portlet-body form">
 												<form role="form" method="post" action="submit.php" enctype='multipart/form-data'>
 													<div class="form-group form-md-line-input form-md-floating-label">
+														<input type="hidden" class="form-control" id="form_control_1" name="mid" value="<?php echo $mid;?>" required>
 														<input type="hidden" class="form-control" id="form_control_1" name="id" value="<?php echo $gpid;?>" required>
+														<input type="hidden" class="form-control" id="form_control_1" name="gid" value="<?php echo $gid;?>" required>
 														<input type="hidden" class="form-control" id="form_control_1" name="due" value="<?php echo $row2['due_date'];?>" required>
 														<textarea class="form-control" id="form_control_1" name="content" required></textarea> 
 														<label for="form_control_1">Content/Description</label>

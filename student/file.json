@@ -1,0 +1,13 @@
+[{
+“name”: “Month”,
+“data”: [“Jan”, “Feb”, “Mar”, “Apr”, “May”, “Jun”, “Jul”, “Aug”, “Sep”, “Oct”, “Nov”, “Dec”]
+}, {
+“name”: “WordPress”,
+“data”: [4, 5, 6, 2, 5, 7, 2, 1, 6, 7, 3, 4]
+}, {
+“name”: “CodeIgniter”,
+“data”: [5, 2, 3, 6, 7, 1, 2, 6, 6, 4, 6, 3]
+}, {
+“name”: “Highcharts”,
+“data”: [7, 8, 9, 6, 7, 10, 9, 7, 6, 9, 8, 4]
+}]

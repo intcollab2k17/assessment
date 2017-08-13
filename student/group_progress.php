@@ -10,13 +10,13 @@
         $gid=$_REQUEST['gid'];
         $id=$_SESSION['id'];
 
-            $at=mysqli_query($con,"select * from post natural join group_post where group_id='$gid' and post_type='assignment'")or die(mysqli_error());
+            $at=mysqli_query($con,"select * from grade join post where grade.post_id=post.post_id and group_id='$gid' and post_type='assignment'")or die(mysqli_error());
 							    while($row=mysqli_fetch_array($at))
 							    {		      
-							      echo "<tr><th>$row[post_title] </th>";
+							      echo "<tr><th>$row[post_title] </th><th>$row[score]/$row[total]</th></tr>";
 
 							     } 
-		$quiz=mysqli_query($con,"select * from quiz natural join group_quiz where group_id='$gid'")or die(mysqli_error($con));
+		$quiz=mysqli_query($con,"select * from grade join quiz where grade.quiz_id=quiz.quiz_id and group_id='$gid' and post_type='quiz'")or die(mysqli_error($con));
 							    while($rowq=mysqli_fetch_array($quiz))
 							    {		     
 							      $qid=$rowq['quiz_id']; 

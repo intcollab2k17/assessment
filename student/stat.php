@@ -1,9 +1,5 @@
 <?php 
 include('session.php');
-if(empty($_SESSION['quiz_id'])):
-header('Location:quiz.php');
-endif;
-error_reporting(0);
 date_default_timezone_set("Asia/Manila");
 ?>
 <!DOCTYPE html>
@@ -12,10 +8,7 @@ date_default_timezone_set("Asia/Manila");
     <meta charset="utf-8"/>
     <title><?php include('title.php');?> | Take Quiz</title>
     <?php include('head.php');?>
-    <?php $current=date("H:i:s");?> 
-    <script language="JavaScript"><!--
-    javascript:window.history.forward(1);
-//--></script>
+ 
   </head>
   <body class="page-md page-header-fixed page-sidebar-closed page-sidebar-closed-hide-logo">
   <?php include('header.php');?>
@@ -31,16 +24,17 @@ date_default_timezone_set("Asia/Manila");
         <!-- BEGIN PAGE CONTENT-->
 			<?php
 			   include('../includes/dbcon.php');
-			   $quiz_id=$_SESSION['quiz_id'];
+			   $quiz_id=$_REQUEST['qid'];
+               $_SESSION['qid']=$quiz_id;
 			   $sid=$_SESSION['id'];
-			   $query2=mysqli_query($con,"select * from quiz_result left join grade on quiz_result.grade_id=grade.grade_id where grade.quiz_id='$quiz_id' and grade.member_id='$sid'")or die(mysqli_error($con));
+			   $query2=mysqli_query($con,"select * from grade join quiz on grade.quiz_id=quiz.quiz_id where grade.quiz_id='$quiz_id'")or die(mysqli_error($con));
 				    $row1=mysqli_fetch_array($query2);
-				      echo $row1['quiz_title'];
+				      $gid= $row1['group_id'];
 				      //unset($_SESSION['quiz_id']);
 			?>
 		     
 		  <div class="note">
-                <h2 class="block">Quiz Results</h2>
+                <h2 class="block">Quiz Result <a href="progress.php?gid=<?php echo $gid; ?>" class="pull-right btn btn-primary btn-lg">Back</a></h2>
                 <h1 class="text-center">
                    Score: <?php echo $row1['score']." / ".$row1['total'];?>
                 </h1>
@@ -156,7 +150,7 @@ date_default_timezone_set("Asia/Manila");
                 }]
             }
             
-            $.getJSON("dataresult.php", function(json) {
+            $.getJSON("stat_data.php", function(json) {
                 options.series[0].data = json;
                 chart = new Highcharts.Chart(options);
             });

@@ -60,6 +60,13 @@ include('session.php');
 								</th>
 <?php 
 	include('../includes/dbcon.php');
+	if (isset($_REQUEST['nsid']))
+		{	
+			$nsid=$_REQUEST['nsid'];
+			mysqli_query($con,"UPDATE notif_stat SET read_status='1' where notif_stat_id='$nsid'")
+		 or die(mysqli_error()); 
+
+		}
 
         $gid=$_REQUEST['gid'];
             $at=mysqli_query($con,"select * from post natural join group_post where group_id='$gid' and post_type='assignment'")or die(mysqli_error($con));
@@ -73,7 +80,7 @@ include('session.php');
 							    {		     
 							      $qid=$rowq['quiz_id']; 
 							      echo "<th>$rowq[quiz_title]";
-							      echo "<a href='stat.php?qid=$qid&gid=$gid'>
+							      echo "<a href='stat1.php?qid=$qid&gid=$gid'>
 							      		<i class='icon-bar-chart font-blue'></i> </a></th>";
 
 							     } 

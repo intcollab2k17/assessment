@@ -15,7 +15,18 @@ include('../includes/dbcon.php');
 		}
 		else
 		{
-		mysqli_query($con,"INSERT INTO enrol(group_id,member_id,status) VALUES('$gid','$id','pending')")or die(mysqli_error());  
+		mysqli_query($con,"INSERT INTO enrol(group_id,member_id,status) VALUES('$gid','$id','pending')")or die(mysqli_error());
+
+		$name= $_SESSION['name'];  
+		$notif="$name requests to join the group";
+		$link="view_group.php?gid=$gid";	
+
+				    	mysqli_query($con,"INSERT INTO notif(notif,group_id,link,status) VALUES('$notif','$gid','$link','faculty')")or die(mysqli_error($con));
+
+				    	$nid=mysqli_insert_id($con);
+				    
+				    	mysqli_query($con,"INSERT INTO notif_stat(notif_id,member_id,read_status) VALUES('$nid','$id','0')")or die(mysqli_error($con));	
+
 			echo "<script type='text/javascript'>alert('Successfully enrolled in this group!');</script>";
 			echo "<script>document.location='search.php'</script>";   
 		}

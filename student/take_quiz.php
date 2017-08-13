@@ -19,12 +19,12 @@ date_default_timezone_set("Asia/Manila");
 //--></script>
   </head>
   <body class="page-md page-header-fixed page-sidebar-closed page-sidebar-closed-hide-logo">
-	<?php include('header.php');?>
+	<?php // include('header.php');?>
 	<div class="clearfix">
 	</div>
 
 	<div class="page-container">
-		<?php include('sidebar.php');?>
+		<?php //include('sidebar.php');?>
 		
 		<!-- BEGIN CONTENT -->
 		<div class="page-content-wrapper">
@@ -53,7 +53,7 @@ date_default_timezone_set("Asia/Manila");
 											$timer=$dif*1000;
 											$left=$hour.":".$minutes.":".$sec;
 										?>
-				  						<span class="btn btn-danger"><div id="hms"><?php echo $left;?></div></span>
+				  						<span class="btn btn-danger"><i class="glyphicon glyphicon-bell"></i><div id="hms"><?php echo $left;?></div></span>
 								</div>
 							</div>
 							<div class="portlet-body" style="min-height: 450px">
@@ -297,30 +297,9 @@ date_default_timezone_set("Asia/Manila");
     <script src="../dist/js/bootstrap.min.js"></script>
 	
     <script>
-      $(document).ready(function (e) {
-    var $worked = $("#worked");
-
-    function update() {
-        var myTime = $worked.html();
-        var ss = myTime.split(":");
-        var dt = new Date();
-        dt.setHours(0);
-        dt.setMinutes(ss[0]);
-        dt.setSeconds(ss[1]);
-
-        var dt2 = new Date(dt.valueOf() - 1000);
-        var temp = dt2.toTimeString().split(" ");
-        var ts = temp[0].split(":");
-
-        $worked.html(ts[1]+":"+ts[2]);
-        setTimeout(update, 1000);
-    }
-
-    setTimeout(update, 1000);
     
-});
-    
-
+ 	window.onload=function(){ 
+    window.setTimeout(function() { document.finish1.submit(); },<?php echo $timer;?>);}
     
     </script>
 	
@@ -355,8 +334,7 @@ $(document).ready(function(){
 });
 
     
-    window.onload=function(){ 
-    window.setTimeout(function() { document.finish.submit(); },<?php echo $timer;?>);}
+   
     
     </script>
      <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>

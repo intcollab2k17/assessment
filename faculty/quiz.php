@@ -101,6 +101,7 @@
 									</div>";
 									while($row=mysqli_fetch_array($query))
 									{
+									$gqid=$row['group_quiz_id'];	
 									$group_id=$row['group_id'];
 									$qid=$row['quiz_id'];
 
@@ -123,15 +124,17 @@
 															 <?php echo date("M d, Y",strtotime($row['quiz_date']));?> 
 														</td>
 														<td class="center">
-															 <?php echo date("h:i a",strtotime($row['quiz_time']));?> 
+															 <?php echo date("h:i A",strtotime($row['quiz_time']));?> 
 														</td>
 														<td>
 															<a class="btn default" data-toggle="modal" href="#edit<?php echo $qid;?>">
 															<i class="icon-note font-blue"></i> </a>
 														</td>
 														<td>
-															<a class="btn default" data-toggle="modal" href="create_quiz.php?qid=<?php echo $qid;?>">
+															<a class="btn" href="create_quiz.php?qid=<?php echo $qid;?>">
 															<i class="icon-eye font-green"></i> </a>
+															<a class="btn" href="monitor.php?gqid=<?php echo $gqid;?>&gid=<?php echo $group_id;?>">
+															<i class="fa fa-desktop font-orange"></i> </a>
 														</td>
 													</tr>
 													<!-- /.edit -->
@@ -165,7 +168,7 @@
 													</div>
 													<div class="form-body">
 														<div class="form-group form-md-line-input form-md-floating-label" id="date">
-															<input class="form-control form-control-inline input-medium date-picker" size="16" type="text" value="<?php echo date("m-d-Y",strtotime($row['quiz_date']));?>"  name="date">
+															<input class="form-control form-control-inline input-medium date-picker" size="16" type="text" value="<?php echo date("m/d/Y",strtotime($row['quiz_date']));?>"  name="date">
 															
 													<span class="help-block">Date of Quiz</span>
 														</div>
@@ -479,7 +482,7 @@
 													<div class="form-body">
 														<div class="form-group form-md-line-input form-md-floating-label" id="date">
 															<input class="form-control form-control-inline input-medium date-picker" size="16" type="text" value="" name="date">
-															<label for="form_control_1">Quiz Date</label>
+													
 													<span class="help-block">Date of Quiz</span>
 														</div>
 														<div class="form-group form-md-line-input form-md-floating-label" id="time">

@@ -1,6 +1,6 @@
 <?php 
 include('session.php');
-
+error_reporting(0);
 include('../includes/dbcon.php');
 
 	$question_id=$_POST['question_id'];
@@ -78,7 +78,7 @@ include('../includes/dbcon.php');
 			echo "<script>document.location='take_quiz.php'</script>";   
 	}
    
-  if (isset($_POST['finish'])){
+  else{
 	if ($type=="Matching Type")
 	{
 	  $answer=$_POST['answer'];
@@ -113,7 +113,7 @@ include('../includes/dbcon.php');
 		  
 		  if ($count>0)
 		  	{
-		    	$score=$score+$rowenum['points'];  
+		    	$score=$score+$rowenum['gupnp_control_point_browse_start(cpoint)'];  
 		    	$answer_status=1;
 		    }	
 		  } 
@@ -165,7 +165,7 @@ include('../includes/dbcon.php');
 			  $tpts=$trow['quiz_total'];
 
 
-		mysqli_query($con,"insert into grade(member_id,group_id,score,total,type) values ('$sid','$group_id','$score','$tpts','quiz')")or die(mysqli_error($con));  
+		mysqli_query($con,"insert into grade(member_id,group_id,score,total,type,quiz_id) values ('$sid','$group_id','$score','$tpts','quiz','$quiz_id')")or die(mysqli_error($con));  
 		$id = mysqli_insert_id($con);
 
 		mysqli_query($con,"insert into quiz_result (quiz_id,member_id,quiz_taken,grade_id) values ('$quiz_id','$sid','$date','$id')")or die(mysqli_error($con));  

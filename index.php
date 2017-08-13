@@ -81,9 +81,7 @@
             <li class="current"><a href="#promo-block">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#register">Register</a></li>
-            <li><a href="#faculty">Faculty</a></li>
             <li><a href="#login">Sign in</a></li>
-            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
         <!-- Navigation END -->
@@ -253,25 +251,25 @@
                       <div class="form-group">
                         <label for="firstname" class="col-lg-4 control-label">First Name <span class="require">*</span></label>
                         <div class="col-lg-8">
-                          <input type="text" class="form-control" id="firstname" name="first">
+                          <input type="text" class="form-control" id="firstname" name="first" required>
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="lastname" class="col-lg-4 control-label">Last Name <span class="require">*</span></label>
                         <div class="col-lg-8">
-                          <input type="text" class="form-control" id="lastname" name="last">
+                          <input type="text" class="form-control" id="lastname" name="last" required>
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="email" class="col-lg-4 control-label">Email <span class="require">*</span></label>
                         <div class="col-lg-8">
-                          <input type="email" class="form-control" id="email" name="email">
+                          <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                       </div>
                       <div class="form-group">
                     <label class="col-md-4 control-label">Type<span class="require">*</span></label>
                     <div class="col-md-8">
-                      <select class="form-control" name="type">
+                      <select class="form-control" name="type" required>
                         <option>Faculty</option>
                         <option>Student</option>
                       </select>
@@ -283,7 +281,7 @@
                       <div class="form-group">
                         <label for="password" class="col-lg-4 control-label">Password <span class="require">*</span></label>
                         <div class="col-lg-8">
-                          <input type="password" class="form-control" id="password" name="password">
+                          <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                       </div>
                       <div class="form-group">
@@ -309,57 +307,8 @@
     </div>
   </div>
   <!-- Services block END -->
-  <!-- Message block BEGIN -->
-  <div class="message-block content content-center valign-center" id="message-block">
-    <div class="valign-center-elem">
-      <h2>The details are not the details <strong>They make the design</strong></h2>
-      <em>KEEN THEMES</em>
-    </div>
-  </div>
-  <!-- Message block END -->
-  <!-- Team block BEGIN -->
-  <div class="team-block content content-center margin-bottom-40" id="faculty">
-    <div class="container">
-      <h2>Meet <strong>the Faculty Members</strong></h2>
-      <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h4>
-      <div class="row">
-        <div class="col-md-4 item">
-          <img src="assets/frontend/onepage/img/people/img6-large.jpg" alt="Marcus Doe" class="img-responsive">
-          <h3>Marcus Doe</h3>
-          <em>Founder</em>
-          <p>Lorem ipsum dolor amet, tempor ut labore magna tempor dolore</p>
-          <div class="tb-socio">
-            <a href="javascript:void(0);" class="fa fa-facebook"></a>
-            <a href="javascript:void(0);" class="fa fa-twitter"></a>
-            <a href="javascript:void(0);" class="fa fa-google-plus"></a>
-          </div>
-        </div>
-        <div class="col-md-4 item">
-          <img src="assets/frontend/onepage/img/people/img7-large.jpg" alt="Elena Taylor" class="img-responsive">
-          <h3>Elena Taylor</h3>
-          <em>Designer</em>
-          <p>Lorem ipsum dolor amet, tempor ut labore magna tempor dolore</p>
-          <div class="tb-socio">
-            <a href="javascript:void(0);" class="fa fa-facebook"></a>
-            <a href="javascript:void(0);" class="fa fa-twitter"></a>
-            <a href="javascript:void(0);" class="fa fa-google-plus"></a>
-          </div>
-        </div>
-        <div class="col-md-4 item">
-          <img src="assets/frontend/onepage/img/people/img8-large.jpg" alt="Cris Nilson" class="img-responsive">
-          <h3>Cris Nilson</h3>
-          <em>Developer</em>
-          <p>Lorem ipsum dolor amet, tempor ut labore magna tempor dolore</p>
-          <div class="tb-socio">
-            <a href="javascript:void(0);" class="fa fa-facebook"></a>
-            <a href="javascript:void(0);" class="fa fa-twitter"></a>
-            <a href="javascript:void(0);" class="fa fa-google-plus"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Team block END -->
+  
+  
   <!-- Portfolio block BEGIN -->
   <div class="portfolio-block content content-center" id="login">
     <div class="container">
@@ -421,11 +370,11 @@
             <div class="content-form-page">
               <div class="row">
                 <div class="col-md-8 col-sm-8 col-md-offset-3">
-                  <form class="form-horizontal form-without-legend" role="form">                    
+                  <form class="form-horizontal form-without-legend" role="form" method="post" action="sendemail.php">                    
                     <div class="form-group">
                       <label for="email" class="col-lg-4 control-label">Email</label>
                       <div class="col-lg-8">
-                        <input type="text" class="form-control" id="email">
+                        <input type="email" class="form-control" id="email" required name="email">
                       </div>
                     </div>
                     <div class="row">
@@ -443,188 +392,18 @@
     </div>
   </div>
   <!-- Choose us block END -->
-  <!-- Checkout block BEGIN -->
-  <div class="checkout-block content">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10">
-          <h2>CHECK OUT ADMIN THEME! <em>Most Full Featured &amp; Powerfull Admin Theme</em></h2>
-        </div>
-        <div class="col-md-2 text-right">
-          <a href="http://www.keenthemes.com/preview/index.php?theme=metronic_admin&amp;page=index.html" target="_blank" class="btn btn-primary">Live preview</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Checkout block END -->
-  <!-- Facts block BEGIN -->
-  <div class="facts-block content content-center" id="facts-block">
-    <h2>Some facts about us</h2>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 col-sm-3 col-xs-6">
-          <div class="item">
-            <strong>39</strong>
-            Projects Completed
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-6">
-          <div class="item">
-            <strong>14</strong>
-            Team Members
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-6">
-          <div class="item">
-            <strong>29k+</strong>
-            Products Sold
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-6">
-          <div class="item">
-            <strong>500</strong>
-            Weekly Sales
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Facts block END -->
   
-  <!-- Testimonials block BEGIN -->
-  <div class="testimonials-block content content-center margin-bottom-65">
-    <div class="container">
-      <h2>Customer <strong>testimonials</strong></h2>
-      <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h4>
-      <div class="carousel slide" data-ride="carousel" id="testimonials-block">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <!-- Carousel items -->
-          <div class="active item">
-            <blockquote>
-              <p>This is the most awesome, full featured, easy, costomizeble theme. It’s extremely responsive and very helpful to all suggestions.</p>
-            </blockquote>
-            <span class="testimonials-name">Mark Doe</span>
-          </div>
-          <!-- Carousel items -->
-          <div class="item">
-            <blockquote>
-              <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.</p>
-            </blockquote>
-            <span class="testimonials-name">Joe Smith</span>
-          </div>
-          <!-- Carousel items -->
-          <div class="item">
-            <blockquote>
-              <p>Williamsburg carles vegan helvetica. Cosby sweater eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p>
-            </blockquote>
-            <span class="testimonials-name">Linda Adams</span>
-          </div>
-        </div>
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#testimonials-block" data-slide-to="0" class="active"></li>
-          <li data-target="#testimonials-block" data-slide-to="1"></li>
-          <li data-target="#testimonials-block" data-slide-to="2"></li>
-        </ol>
-      </div>
-    </div>
-  </div>
-  <!-- Testimonials block END -->
-  <!-- Partners block BEGIN -->
-  <div class="partners-block">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-2 col-sm-3 col-xs-6">
-          <img src="assets/frontend/onepage/img/partners/cisco.png" alt="cisco">
-        </div>
-        <div class="col-md-2 col-sm-3 col-xs-6">
-          <img src="assets/frontend/onepage/img/partners/walmart.png" alt="walmart">
-        </div>
-        <div class="col-md-2 col-sm-3 col-xs-6">
-          <img src="assets/frontend/onepage/img/partners/gamescast.png" alt="gamescast">
-        </div>
-        <div class="col-md-2 col-sm-3 col-xs-6">
-          <img src="assets/frontend/onepage/img/partners/spinwokrx.png" alt="spinwokrx">
-        </div>
-        <div class="col-md-2 col-sm-3 col-xs-6">
-          <img src="assets/frontend/onepage/img/partners/ngreen.png" alt="ngreen">
-        </div>
-        <div class="col-md-2 col-sm-3 col-xs-6">
-          <img src="assets/frontend/onepage/img/partners/vimeo.png" alt="vimeo">
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Partners block END -->
-  <!-- BEGIN PRE-FOOTER -->
-  <div class="pre-footer" id="contact">
-    <div class="container">
-      <div class="row">
-        <!-- BEGIN BOTTOM ABOUT BLOCK -->
-        <div class="col-md-4 col-sm-6 pre-footer-col">
-          <h2>About us</h2>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo consequat. </p>
-          <p>Duis autem vel eum iriure dolor vulputate velit esse molestie at dolore.</p>
-        </div>
-        <!-- END BOTTOM ABOUT BLOCK -->
-        <!-- BEGIN TWITTER BLOCK --> 
-        <div class="col-md-4 col-sm-6 pre-footer-col">
-          <h2 class="margin-bottom-0">Latest Tweets</h2>
-          <a class="twitter-timeline" href="https://twitter.com/twitterapi" data-tweet-limit="2" data-theme="dark" data-link-color="#57C8EB" data-widget-id="455411516829736961" data-chrome="noheader nofooter noscrollbar noborders transparent">Loading tweets by @keenthemes...</a>      
-        </div>
-        <!-- END TWITTER BLOCK -->
-        <div class="col-md-4 col-sm-6 pre-footer-col">
-          <!-- BEGIN BOTTOM CONTACTS -->
-          <h2>Our Contacts</h2>
-          <address class="margin-bottom-20">
-            35, Lorem Lis Street, Park Ave<br>
-            California, US<br>
-            Phone: 300 323 3456<br>
-            Fax: 300 323 1456<br>
-            Email: <a href="mailto:info@metronic.com">info@metronic.com</a><br>
-            Skype: <a href="skype:metronic">metronic</a>
-          </address>
-          <!-- END BOTTOM CONTACTS -->
-          <div class="pre-footer-subscribe-box">
-            <h2>Newsletter</h2>
-            <form action="javascript:void(0);">
-              <div class="input-group">
-                <input type="text" placeholder="youremail@mail.com" class="form-control">
-                <span class="input-group-btn">
-                <button class="btn btn-primary" type="submit">Subscribe</button>
-                </span>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- END PRE-FOOTER -->
+  
   <!-- BEGIN FOOTER -->
   <div class="footer">
     <div class="container">
       <div class="row">
         <!-- BEGIN COPYRIGHT -->
         <div class="col-md-6 col-sm-6">
-          <div class="copyright">2014 © Metronic One Page. ALL Rights Reserved.</div>
+          <div class="copyright">2017 © Online Assessment. ALL Rights Reserved.</div>
         </div>
         <!-- END COPYRIGHT -->
-        <!-- BEGIN SOCIAL ICONS -->
-        <div class="col-md-6 col-sm-6 pull-right">
-          <ul class="social-icons">
-            <li><a class="rss" data-original-title="rss" href="javascript:void(0);"></a></li>
-            <li><a class="facebook" data-original-title="facebook" href="javascript:void(0);"></a></li>
-            <li><a class="twitter" data-original-title="twitter" href="javascript:void(0);"></a></li>
-            <li><a class="googleplus" data-original-title="googleplus" href="javascript:void(0);"></a></li>
-            <li><a class="linkedin" data-original-title="linkedin" href="javascript:void(0);"></a></li>
-            <li><a class="youtube" data-original-title="youtube" href="javascript:void(0);"></a></li>
-            <li><a class="vimeo" data-original-title="vimeo" href="javascript:void(0);"></a></li>
-            <li><a class="skype" data-original-title="skype" href="javascript:void(0);"></a></li>
-          </ul>
-        </div>
-        <!-- END SOCIAL ICONS -->
+       
       </div>
     </div>
   </div>

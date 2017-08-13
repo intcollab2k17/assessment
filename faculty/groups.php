@@ -124,6 +124,21 @@ $querycount=mysqli_query($con,"select * from enrol where group_id='$group_id'")o
 															</select>
 															<label for="form_control_1">Subject</label>
 														</div>
+														<div class="form-body">
+														<div class="form-group form-md-line-input has-info">
+															<select class="form-control" id="form_control_1" name="sem">		
+																<option>1st</option>							
+																<option>2nd</option>							
+																<option>Summer</option>													
+															</select>
+															<label for="form_control_1">School Year</label>
+														</div>
+													</div>
+													<div class="form-body">
+														<div class="form-group form-md-line-input has-info">
+															<input type="text" class="form-control" id="form_control_1" name="sy" required>
+															<label for="form_control_1">School Year</label>
+														</div>
 													</div>
 													<div class="form-actions noborder">
 														<button type="submit" class="btn blue">Save</button>

@@ -1,10 +1,9 @@
 <?php
 
 include('session.php');
-$qid=$_SESSION['quiz_id'];
-$sid=$_SESSION['id'];
 include('../includes/dbcon.php');
-
+$sid=$_SESSION['id'];
+$qid=$_SESSION['qid'];
 $result = mysqli_query($con,"SELECT * FROM `grade` where quiz_id='$qid' and member_id='$sid'");
 	
 $rows = array();

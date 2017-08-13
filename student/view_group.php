@@ -31,7 +31,13 @@
 					<!-- END BEGIN PROFILE SIDEBAR -->
 					<!-- BEGIN PROFILE CONTENT -->
 <?php 
+if (isset($_REQUEST['nsid']))
+{	
+	$nsid=$_REQUEST['nsid'];
+	mysqli_query($con,"UPDATE notif_stat SET read_status='1' where notif_stat_id='$nsid'")
+ or die(mysqli_error()); 
 
+}
 $gid=$_REQUEST['gid'];
 $query=mysqli_query($con,"select * from `group` natural join subject where group_id='$gid'")or die(mysqli_error($con));
 	$row=mysqli_fetch_array($query);
@@ -104,8 +110,7 @@ $query=mysqli_query($con,"select * from `group` natural join subject where group
 															</div>
 															
 															<div class="item-body">
-																 <h3><?php echo $row2['post_title'];?>
-																 <i class="icon-action-redo font-blue"></i> <?php echo $cys;?></h3>
+																 <h3><?php echo $row2['post_title'];?></h3>
 																 <p><?php echo $row2['post_content'];?></p>
 <?php
 	

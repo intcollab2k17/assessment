@@ -60,7 +60,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!-- BEGIN PROFILE CONTENT -->
 					<div class="profile-content">
 						<div class="row">
-							<div class="col-md-8">
+							<div class="col-md-12">
 								<!-- BEGIN PORTLET -->
 								<div class="portlet light">
 									<div class="portlet-title tabbable-line">
@@ -151,58 +151,7 @@ $querycount=mysqli_query($con,"select * from enrol where group_id='$group_id' an
 								</div>
 								<!-- END PORTLET -->
 							</div>
-							<div class="col-md-4">
-								<div class="row">  	
-									<div class="col-md-12">
-										<!-- BEGIN SAMPLE FORM PORTLET-->
-										<div class="portlet light">
-											<div class="portlet-title">
-												<div class="caption font-red-sunglo">
-													<i class="icon-users font-red-sunglo"></i>
-													<span class="caption-subject bold uppercase"> Add Group</span>
-												</div>
-											</div>
-											<div class="portlet-body form">
-												<form role="form" method="post" action="group_add.php">
-													<div class="form-body">
-														<div class="form-group form-md-line-input has-info">
-															<select class="form-control" id="form_control_1" name="cys">
-<?php
-			
-		$query=mysqli_query($con,"select * from cys order by cys")or die(mysqli_error());
-  			while ($row=mysqli_fetch_array($query)){
-?>															
-			<option><?php echo $row['cys'];?></option>
-<?php }?>																
-															</select>
-															<label for="form_control_1">Course, Yr. & Section</label>
-														</div>
-														<div class="form-group form-md-line-input has-info">
-															<select class="form-control" id="form_control_1" name="subject">
-<?php
-			
-		$query=mysqli_query($con,"select * from subject order by subject_code")or die(mysqli_error());
-  			while ($row=mysqli_fetch_array($query)){
-?>															
-			<option value="<?php echo $row['subject_id'];?>"><?php echo $row['subject_code'];?></option>
-<?php }?>
-															</select>
-															<label for="form_control_1">Subject</label>
-														</div>
-													</div>
-													<div class="form-actions noborder">
-														<button type="submit" class="btn blue">Save</button>
-														<button type="reset" class="btn default">Cancel</button>
-													</div>
-												</form>
-											</div>
-										</div>
-										<!-- END SAMPLE FORM PORTLET-->
-										
-									</div>
-									
-								</div><!--end row-->	
-							</div>
+							
 						</div>
 						
 					</div>

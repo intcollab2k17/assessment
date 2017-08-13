@@ -5,6 +5,7 @@ include('../includes/dbcon.php');
 	date_default_timezone_set("Asia/Manila");
 	$qid=$_REQUEST['qid'];
 	$id=$_SESSION['id'];
+	$gid=$_SESSION['gid'];
 	$_SESSION['start']=date("H:i:s");
 	$_SESSION['time']=$_REQUEST['time'];
 	$time=$_SESSION['time'];
@@ -22,7 +23,7 @@ include('../includes/dbcon.php');
 			$i++;
 			$question_id=$row2['question_id'];		      	  
 			
-			mysqli_query($con,"INSERT INTO question_order(member_id,question_id,q_order,quiz_id)VALUES('$id','$question_id','$i','$qid')")or die(mysqli_error($con));  
+			mysqli_query($con,"INSERT INTO question_order(member_id,question_id,q_order,quiz_id,group_id)VALUES('$id','$question_id','$i','$qid','$gid')")or die(mysqli_error($con));  
 			
 		    }
 	}	    

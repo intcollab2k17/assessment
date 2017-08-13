@@ -44,18 +44,49 @@ include('session.php');
 							
 <?php 
 	include('../includes/dbcon.php');
+	if (isset($_REQUEST['nsid']))
+	{	
+		$nsid=$_REQUEST['nsid'];
+		mysqli_query($con,"UPDATE notif_stat SET read_status='1' where notif_stat_id='$nsid'")
+	 or die(mysqli_error()); 
 
+	}
         $gid=$_REQUEST['gid'];
         $id=$_SESSION['id'];
-            $at=mysqli_query($con,"select * from grade where group_id='$gid' and member_id='$id'")or die(mysqli_error($con));
+        
+            $at=mysqli_query($con,"SELECT * FROM `grade` join post where grade.post_id=post.post_id and grade.group_id='$gid' and grade.member_id='$id'")or die(mysqli_error($con));
 							    while($row=mysqli_fetch_array($at))
 							    {
+							    $gid=$row['grade_id'];	
 										      
-							      echo "<tr><th>$row[type]</th>";
+							      echo "<tr><th>$row[post_title]</th>";
 							      echo "<th>$row[score]/$row[total]</th>";
-							      echo "<th><a href='stat.php?id=$id'>
-							      		<i class='icon-bar-chart font-blue'></i> </a></th>";
+							       if ($row['type']=="assignment")
+							      {
+							      
+							      	echo "<th></th>";
+		
+							      }
 	
+?>
+							
+							</tr>
+													
+<?php }?>
+<?php 
+
+            $quiz=mysqli_query($con,"SELECT * FROM `grade` join quiz where grade.quiz_id=quiz.quiz_id and grade.group_id='$gid' and grade.member_id='$id'")or die(mysqli_error($con));
+							    while($q=mysqli_fetch_array($quiz))
+							    {
+										
+								$qid=$q['quiz_id'];		      
+							      echo "<tr><th>$q[quiz_title]</th>";
+							      echo "<th>$q[score]/$q[total]</th>";
+
+							      
+							      	echo "<th><a href='stat.php?qid=$qid'>
+							      	<i class='icon-bar-chart font-blue'></i> </a></th>";
+							      
 ?>
 							
 							</tr>

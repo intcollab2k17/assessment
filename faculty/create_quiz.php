@@ -233,12 +233,13 @@
 		<table id='example1' class='table table-bordered table-striped'>
                     <thead>
                       <tr>
-			<th>Item</th>
+						<th>Item</th>
                         <th>Type</th>
+                        <th>Instruction</th>
                         <th>Question</th>
                         <th>Points</th>
-			<th>Choices</th>
-			<th>Correct</th>
+						<th>Choices</th>
+						<th>Correct</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -281,39 +282,43 @@
  </div><!--end of modal-->
  
                       <tr>
-			<td><?php echo $i++;?></td>
+						<td><?php echo $i++;?></td>
                         <td><?php echo $row['question_type'];?></td>
-                        <td><?php
+                        <?php
 			    if ($row['question_type']=="Matching Type")
 			    {
 			    $cola=mysqli_query($con,"select cola,question_id from answer where question_id='$question_id'")or die(mysqli_error($con));	
 					while ($rowcola=mysqli_fetch_array($cola)){
-					echo $rowcola['cola'];echo "<br>";
+					echo "<td>";	
+					echo $row['instruction'];
+					echo "</td>";	
+					echo "<td>";	
+					echo $rowcola['cola'];
+					echo "</td>";	
+					echo "<td>";	
+					echo $row['points'];
+					echo "</td>";	
 					}
 			    }
-			    else
-			    echo $row['question'];
+			    if ($row['question_type']=="Enumeration")
+			    {
+			    $cola=mysqli_query($con,"select * from answer  where question_id='$question_id'")or die(mysqli_error($con));	
+					while ($rowcola=mysqli_fetch_array($cola)){
+					echo "<td>";	
+					echo $row['instruction'];
+					echo "</td>";	
+					echo "<td>";	
+					echo "</td>";	
+					echo "<td>";	
+					echo $row['points'];
+					echo "</td>";	
+					}
+			    }
+			    
+			    	
 			    ?>
-			</td>
-                        <td><?php 
-			  if (($row['question_type']=="Matching Type") or ($row['question_type']=="Enumeration"))
-				{
-				$c=mysqli_query($con,"select COUNT(*) as count,points from answer natural join question where question_id='$question_id'")or die(mysqli_error($con));	
-					$rowc=mysqli_fetch_array($c);
-					$sum=$rowc['count']*$rowc['points'];
-					echo $rowc['points']." (";
-					echo $sum.")";
-					
-				}
-				else
-				{
-				$pt2=$row['points'];
-				echo $pt2;
-				}
-				
-				
-						
-						?></td>
+			
+             
 			<td>
 				<?php	
 					$query1=mysqli_query($con,"select * from answer where question_id='$question_id'")or die(mysqli_error($con));						
@@ -529,7 +534,7 @@ function addInput(divName){
           counter++;
      }
 }
-<!-- END JAVASCRIPTS -->
+</script>
 </body>
 <!-- END BODY -->
 </html> 	

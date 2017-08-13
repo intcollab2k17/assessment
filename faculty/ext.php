@@ -1,7 +1,7 @@
 <?php
 if (($ext=="jpg") or ($ext=="jpeg") or ($ext=="png") or ($ext=="gif") or ($ext=="ico")  or ($ext=="JPG"))	
   {		
-	$display="ico/psd.png";
+	$display="ico/psd.jpg";
   }	
 elseif (($ext=="ppt") or ($ext=="pptx"))		
   {			

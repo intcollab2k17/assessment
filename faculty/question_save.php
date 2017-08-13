@@ -64,19 +64,19 @@
 		
 		$answer = $_POST['answer'];
 		
-		mysqli_query($con,"INSERT INTO question(quiz_id,question,question_type,points) VALUES('$quiz','$question','$type','$pts')")or die(mysqli_error($con)); 
-
-		
-		$id = mysqli_insert_id($con);
 		$i=0;
 		foreach($answer as $choice1) { 
 			if ($choice1<>"")
 			{
-				$total=$pts*$i;
-			mysqli_query($con,"INSERT INTO answer(question_id,answer) VALUES('$id','$choice1')")or die(mysqli_error($con));
+				mysqli_query($con,"INSERT INTO question(quiz_id,question,question_type,points,instruction) VALUES('$quiz','$question','$type','$pts','$question')")or die(mysqli_error($con)); 
 
-			mysqli_query($con,"UPDATE quiz SET quiz_total=quiz_total+'$total' where quiz_id='$quiz'")or die(mysqli_error($con)); 
-			$i++;}
+					$id = mysqli_insert_id($con);
+					$total=$pts*$i;
+					mysqli_query($con,"INSERT INTO answer(question_id,answer) VALUES('$id','$choice1')")or die(mysqli_error($con));
+
+					mysqli_query($con,"UPDATE quiz SET quiz_total=quiz_total+'$total' where quiz_id='$quiz'")or die(mysqli_error($con)); 
+					$i++;
+			}
 		}
 	}
 	if ($type=="Matching Type")
@@ -86,11 +86,9 @@
 		$letter1 = $_POST['letter1'];
 		$choice1 = $_POST['choice1'];
 		$answer2 = $_POST['answer2'];
+		$question = $_POST['question'];
 		
-		mysqli_query($con,"INSERT INTO question(quiz_id,question,question_type,points) VALUES('$quiz','$question','$type','$pts')")or die(mysqli_error($con));  
-
 		
-		$id = mysqli_insert_id($con);
 		$ii=0;
 		foreach($question1 as $q)
 		  {
@@ -99,7 +97,10 @@
 		    $c = $choice1[$ii];
 		    $a = $answer2[$ii];
 		    
-		    
+			mysqli_query($con,"INSERT INTO question(quiz_id,question,question_type,points,instruction) VALUES('$quiz','$question','$type','$pts','$question')")or die(mysqli_error($con));  
+
+		
+		$id = mysqli_insert_id($con);    
 
 		    mysqli_query($con,"INSERT INTO answer(question_id,letter,choices,cola,answer) VALUES('$id','$l','$c','$q','$a')")or die(mysqli_error($con));
 			$ii++;
