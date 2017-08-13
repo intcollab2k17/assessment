@@ -28,7 +28,7 @@ date_default_timezone_set("Asia/Manila");
 		
 		<!-- BEGIN CONTENT -->
 		<div class="page-content-wrapper">
-			<div class="page-content">
+			<div class="page-content" id="fullscreen" style="margin-top: -100px">
 				<!-- BEGIN PAGE CONTENT-->
 <?php
 	include('../includes/dbcon.php');
@@ -358,6 +358,6 @@ $(document).ready(function(){
     <script src="../dist/js/pages/dashboard2.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
-   
+	
   </body>
 </html> 

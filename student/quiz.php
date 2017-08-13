@@ -297,6 +297,7 @@ Profile.init(); // init page demo
         
     });   
 </script>
+
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

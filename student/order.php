@@ -5,7 +5,7 @@ include('../includes/dbcon.php');
 	date_default_timezone_set("Asia/Manila");
 	$qid=$_REQUEST['qid'];
 	$id=$_SESSION['id'];
-	$gid=$_SESSION['gid'];
+	$gid=$_REQUEST['gid'];
 	$_SESSION['start']=date("H:i:s");
 	$_SESSION['time']=$_REQUEST['time'];
 	$time=$_SESSION['time'];
@@ -32,6 +32,14 @@ include('../includes/dbcon.php');
 	
 		    $_SESSION['question_id']=$row3['question_id'];
 		    $_SESSION['quiz_id']=$qid;
-		  	 echo "<script>document.location='take_quiz.php'</script>";   
+
+			
+		  	
 	
 ?>
+<script>
+<!--
+window.open("take_quiz.php","fs","fullscreen=yes,width=1400,height=840")
+document.location='quiz.php'
+//-->
+</script>
