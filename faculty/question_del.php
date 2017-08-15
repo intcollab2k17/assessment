@@ -26,7 +26,7 @@
 	mysqli_query($con,"DELETE FROM answer WHERE question_id = '$question_id'")
 	or die(mysqli_error());
   	
-	echo "<script type='text/javascript'>alert('Successfully deleted a question!');</script>";
+//	echo "<script type='text/javascript'>alert('Successfully deleted a question!');</script>";
 	echo "<script>document.location='create_quiz.php?qid=$qid'</script>";
 ?>										
 

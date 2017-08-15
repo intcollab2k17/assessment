@@ -16,7 +16,7 @@ include('../includes/dbcon.php');
 	  if ($row['count']<1)
 	    {
 	
-	$query1=mysqli_query($con,"select * from question where quiz_id='$qid' order by RAND(question_id)")or die(mysqli_error($con));
+	$query1=mysqli_query($con,"select * from question where quiz_id='$qid' order by question_id")or die(mysqli_error($con));
 		$i=0;
 		while($row2=mysqli_fetch_array($query1))
 		    {

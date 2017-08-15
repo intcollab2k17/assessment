@@ -202,10 +202,9 @@ date_default_timezone_set("Asia/Manila");
 											      $choices=$row3['choices'];
 											      $answer=$row['answer'];
 												 
-												     $answer=explode(",",$answer);
 												      echo "
 													<div class='col-md-12'>
-													  <input type='text' name='answer[]' value='$answer[$i]'>
+													  <input type='text' name='answer' value='$answer'>
 													</div>
 												      ";
 												      $i++;
