@@ -34,4 +34,8 @@
 		    margin-top: -10px;
 
 	}
+
+	.page-header.md-shadow-z-1-i.navbar.navbar-fixed-top {
+		position:relative !important;
+	}
 </style>
