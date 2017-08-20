@@ -36,7 +36,7 @@
 		<div class="loader"></div>
 <?php
 
-	session_destroy();
+ session_destroy();
 	
  echo '<meta http-equiv="refresh" content="2;url=../index.php">';
  

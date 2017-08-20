@@ -557,16 +557,7 @@ Demo.init(); // init demo features\
 Profile.init(); // init page demo
 });
 </script>
-<script>
-	jQuery(document).ready(function() {       
-        // initiate layout and plugins
-    	Metronic.init(); // init metronic core components
-		Layout.init(); // init current layout
-		Demo.init(); // init demo features
-        ComponentsPickers.init();
-        
-    });   
-</script>
+
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

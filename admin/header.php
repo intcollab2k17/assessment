@@ -47,7 +47,10 @@
 						<img alt="" class="img-circle" src="../images/default.gif"/>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
-							
+							<li>
+								<a href="account.php">
+								<i class="icon-key"></i> Account Settings </a>
+							</li>
 							<li>
 								<a href="logout.php">
 								<i class="icon-key"></i> Log Out </a>

@@ -29,7 +29,7 @@ include('session.php');
 			<div class="row">
 				<div class="col-md-12">
 					<!-- BEGIN PROFILE SIDEBAR -->
-					<?php include('profile_sidebar.php');?>
+					<?php //include('profile_sidebar.php');?>
 					<!-- END BEGIN PROFILE SIDEBAR -->
 					<!-- BEGIN PROFILE CONTENT -->
 					<div class="profile-content">
@@ -55,7 +55,7 @@ include('session.php');
 																 Faculty
 															</div>
 															<div class="number">
-															200
+															
 															</div>
 														</div>
 													</div>
@@ -70,7 +70,7 @@ include('session.php');
 																 Student
 															</div>
 															<div class="number">
-																 124
+																 
 															</div>
 														</div>
 													</div>
@@ -101,7 +101,7 @@ include('session.php');
 																 Subject
 															</div>
 															<div class="number">
-																 34
+																 
 															</div>
 														</div>
 													</div>
@@ -116,7 +116,22 @@ include('session.php');
 																 Admin User
 															</div>
 															<div class="number">
-																 34
+																 
+															</div>
+														</div>
+													</div>
+												</a>
+												<a href="logs.php">
+													<div class="tile bg-blue">
+														<div class="tile-body">
+															<i class="icon-ghost"></i>
+														</div>
+														<div class="tile-object">
+															<div class="name">
+																 User Logs
+															</div>
+															<div class="number">
+																 
 															</div>
 														</div>
 													</div>

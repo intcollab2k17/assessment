@@ -9,6 +9,7 @@ $user_unsafe=$_POST['email'];
 $pass_unsafe=$_POST['password'];
 $type=$_POST['type'];
 
+
 $email = mysqli_real_escape_string($con,$user_unsafe);
 $pass = mysqli_real_escape_string($con,$pass_unsafe);
 $pass1=md5($pass);
@@ -41,6 +42,10 @@ $query=mysqli_query($con,"select * from member where email='$email' and password
 			  	{
 			  		echo "<script type='text/javascript'>document.location='student/home.php'</script>";
 			  	}
+
+			  	$date=date("Y-m-d H:i");
+			  	mysqli_query($con,"INSERT INTO history_logs(log,log_date,member_id) VALUES('successfully logged in!','$date','$id')")or die(mysqli_error($con));  
+	
 				  
   
 	  }

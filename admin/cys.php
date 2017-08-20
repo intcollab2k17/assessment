@@ -26,7 +26,7 @@ include('session.php');
 			<div class="row">
 				<div class="col-md-12">
 					<!-- BEGIN PROFILE SIDEBAR -->
-					<?php include('profile_sidebar.php');?>
+					<?php //include('profile_sidebar.php');?>
 					<!-- END BEGIN PROFILE SIDEBAR -->
 					<!-- BEGIN PROFILE CONTENT -->
 					<div class="profile-content">
@@ -40,37 +40,7 @@ include('session.php');
 							</div>
 						</div>
 						<div class="portlet-body">
-							<div class="table-toolbar">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="btn-group">
-											<button id="sample_editable_1_new" class="btn green">
-											Import <i class="fa fa-plus"></i>
-											</button>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="btn-group pull-right">
-											<button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-right">
-												<li>
-													<a href="javascript:;">
-													Print </a>
-												</li>
-												<li>
-													<a href="javascript:;">
-													Save as PDF </a>
-												</li>
-												<li>
-													<a href="javascript:;">
-													Export to Excel </a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
+							
 							<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
 							<thead>
 							<tr>
@@ -195,6 +165,26 @@ include('session.php');
 											<div class="portlet-title">
 												<div class="caption font-red-sunglo">
 													<i class=" icon-notebook font-red-sunglo"></i>
+													<span class="caption-subject bold uppercase"> Import Student</span>
+												</div>
+											</div>
+											<div class="portlet-body form">
+												<form method="post" enctype="multipart/form-data">
+											<p style="font-size:16px;line-height:34px;">Follow format to upload successfully. Column Course Year and Section and should be in <b>CSV</b> format</p>
+											<input type="file" name="image">
+											<input type="submit" name="import" value="Import" class="btn btn-primary">
+										    </form>									
+											</div>
+										</div>
+										<!-- END SAMPLE FORM PORTLET-->
+									
+								</div>
+								<div class="col-md-12">
+									<!-- BEGIN SAMPLE FORM PORTLET-->
+										<div class="portlet light">
+											<div class="portlet-title">
+												<div class="caption font-red-sunglo">
+													<i class=" icon-notebook font-red-sunglo"></i>
 													<span class="caption-subject bold uppercase"> Add Course, Yr. & Section</span>
 												</div>
 											</div>
@@ -264,3 +254,29 @@ Profile.init(); // init page demo
 </body>
 <!-- END BODY -->
 </html> 	
+<?php
+if (isset($_POST['import'])) 
+{
+	if (is_uploaded_file($_FILES['image']['tmp_name'])) {
+		echo "<h1>" . "File ". $_FILES['image']['name'] ." uploaded successfully." . "</h1>";
+		echo "<h2>Displaying contents:</h2>";
+		readfile($_FILES['image']['tmp_name']);
+	}
+
+	//Import uploaded file to Database
+	$handle = fopen($_FILES['image']['tmp_name'], "r");
+
+	while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+		mysqli_query($con,"INSERT into cys(cys) values('$data[0]')");
+		
+		}
+
+	fclose($handle);
+
+	//print "Import done";
+	echo "<script type='text/javascript'>alert('Successfully imported a CSV file!');</script>";
+	echo "<script>document.location='cys.php'</script>";
+	//view upload form
+}
+
+?>

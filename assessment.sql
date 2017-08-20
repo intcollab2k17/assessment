@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2017 at 04:11 AM
+-- Generation Time: Aug 20, 2017 at 07:54 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -31,7 +31,7 @@ CREATE TABLE `admin` (
   `admin_last` varchar(15) NOT NULL,
   `admin_first` varchar(15) NOT NULL,
   `admin_email` varchar(30) NOT NULL,
-  `admin_password` varchar(30) NOT NULL
+  `admin_password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -62,16 +62,15 @@ CREATE TABLE `answer` (
 --
 
 INSERT INTO `answer` (`answer_id`, `question_id`, `answer`, `choices`, `letter`, `cola`) VALUES
-(66, 33, 'a', 'a', 'A', 'a'),
-(67, 34, 'b', 'b', 'B', 'b'),
-(68, 35, 'c', 'c', 'C', 'c'),
-(69, 36, 'd', 'd', 'D', 'd'),
-(70, 37, 'e', 'e', 'E', 'e'),
-(71, 38, 'A', '', '', ''),
-(72, 39, 'B', '', '', ''),
-(73, 40, 'C', '', '', ''),
-(74, 41, 'D', '', '', ''),
-(75, 42, 'E', '', '', '');
+(76, 43, 'A', '', '', ''),
+(77, 44, 'b', '', '', ''),
+(78, 45, 'c', '', '', ''),
+(79, 46, 'd', '', '', ''),
+(80, 47, 'e', '', '', ''),
+(81, 48, 'A', '1', 'A', ''),
+(82, 48, 'A', '2', 'B', ''),
+(83, 48, 'A', '3', 'C', ''),
+(84, 48, 'A', '4', 'D', '');
 
 -- --------------------------------------------------------
 
@@ -138,13 +137,7 @@ CREATE TABLE `grade` (
 --
 
 INSERT INTO `grade` (`grade_id`, `member_id`, `group_id`, `score`, `total`, `type`, `post_id`, `quiz_id`) VALUES
-(2, 2, 1, 5, 5, 'quiz', 0, 12),
-(3, 10, 1, 0, 40, 'quiz', 0, 12),
-(4, 10, 1, 0, 40, 'quiz', 0, 12),
-(5, 10, 1, 0, 40, 'quiz', 0, 12),
-(6, 10, 1, 0, 40, 'quiz', 0, 12),
-(7, 10, 1, 0, 40, 'quiz', 0, 12),
-(8, 10, 1, 0, 40, 'quiz', 0, 12);
+(24, 2, 1, 2, 2, 'quiz', 0, 13);
 
 -- --------------------------------------------------------
 
@@ -183,6 +176,14 @@ CREATE TABLE `group_post` (
   `due_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `group_post`
+--
+
+INSERT INTO `group_post` (`group_post_id`, `post_id`, `group_id`, `due_date`) VALUES
+(1, 1, 1, '1970-01-01 16:20:00'),
+(2, 2, 1, '1970-01-01 16:20:00');
+
 -- --------------------------------------------------------
 
 --
@@ -206,7 +207,30 @@ INSERT INTO `group_quiz` (`group_quiz_id`, `quiz_id`, `group_id`, `group_quiz_st
 (2, 8, 1, 'inactive', '2017-06-27', '17:20:00'),
 (3, 9, 2, 'active', '0000-00-00', '00:00:00'),
 (4, 10, 1, 'inactive', '2017-07-24', '09:45:00'),
-(5, 12, 1, 'active', '1970-01-01', '09:10:00');
+(5, 12, 1, 'inactive', '2017-08-09', '09:10:00'),
+(6, 13, 1, 'active', '1970-01-01', '01:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history_logs`
+--
+
+CREATE TABLE `history_logs` (
+  `log_id` int(11) NOT NULL,
+  `log` varchar(100) NOT NULL,
+  `log_date` datetime NOT NULL,
+  `member_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `history_logs`
+--
+
+INSERT INTO `history_logs` (`log_id`, `log`, `log_date`, `member_id`) VALUES
+(1, 'successfully logged in!', '2017-08-19 09:15:00', 1),
+(2, 'successfully logged in!', '2017-08-19 10:18:00', 1),
+(3, 'successfully logged in!', '2017-08-19 10:19:00', 10);
 
 -- --------------------------------------------------------
 
@@ -238,7 +262,9 @@ INSERT INTO `member` (`member_id`, `member_last`, `member_first`, `member_mi`, `
 (2, 'Cueva', 'Kaye', '', 'BSIS 4-A', 'cueva@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '2017-02-11', '169430-1.png', 'Student', 1, 0),
 (10, 'g', 'g', '', 'BSIS 1-A', 'e@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '2017-06-24', 'screenshot-1.png', 'Student', 1, 0),
 (11, 'Pun-an', 'Joanna', '', '', 'joanna@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-06-26', 'default.gif', 'Faculty', 1, 0),
-(12, 'ken', 'ken', '', 'BSIS 1-B', 'ken@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-06-26', 'default.gif', 'student', 1, 0);
+(12, 'ken', 'ken', '', 'BSIS 1-B', 'ken@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-06-26', 'default.gif', 'student', 1, 0),
+(13, 'Aboy', 'Kenneth', '', '', '', '', '0000-00-00', '', 'Student', 0, 0),
+(15, 'Sim', 'Lavern', '', 'BSIS 4A', '', '', '0000-00-00', '', 'Student', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -254,6 +280,14 @@ CREATE TABLE `notif` (
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `notif`
+--
+
+INSERT INTO `notif` (`notif_id`, `notif`, `link`, `group_id`, `status`) VALUES
+(1, 'klkl on', 'view_group.php?gid=1', 1, 'student'),
+(2, 'dddffff on', 'view_group.php?gid=1', 1, 'student');
+
 -- --------------------------------------------------------
 
 --
@@ -266,6 +300,18 @@ CREATE TABLE `notif_stat` (
   `member_id` int(11) NOT NULL,
   `read_status` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notif_stat`
+--
+
+INSERT INTO `notif_stat` (`notif_stat_id`, `notif_id`, `member_id`, `read_status`) VALUES
+(1, 1, 2, 0),
+(2, 1, 10, 0),
+(3, 1, 12, 0),
+(4, 2, 2, 0),
+(5, 2, 10, 0),
+(6, 2, 12, 0);
 
 -- --------------------------------------------------------
 
@@ -283,6 +329,14 @@ CREATE TABLE `post` (
   `points` int(11) NOT NULL,
   `post_type` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`post_id`, `post_date`, `post_content`, `post_file`, `member_id`, `post_title`, `points`, `post_type`) VALUES
+(1, '2017-08-19 16:18:20', 'lklk', 'Book1.csv', 1, 'klkl', 0, 'post'),
+(2, '2017-08-19 16:18:33', 'ffff', 'Blood Donor History Questionnaire.pdf', 1, 'dddffff', 0, 'post');
 
 -- --------------------------------------------------------
 
@@ -304,16 +358,12 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`question_id`, `quiz_id`, `question`, `question_type`, `points`, `instruction`) VALUES
-(33, 12, 'Match A w B', 'Matching Type', 1, 'Match A w B'),
-(34, 12, 'Match A w B', 'Matching Type', 1, 'Match A w B'),
-(35, 12, 'Match A w B', 'Matching Type', 1, 'Match A w B'),
-(36, 12, 'Match A w B', 'Matching Type', 1, 'Match A w B'),
-(37, 12, 'Match A w B', 'Matching Type', 1, 'Match A w B'),
-(38, 12, 'Enumerate', 'Enumeration', 1, 'Enumerate'),
-(39, 12, 'Enumerate', 'Enumeration', 1, 'Enumerate'),
-(40, 12, 'Enumerate', 'Enumeration', 1, 'Enumerate'),
-(41, 12, 'Enumerate', 'Enumeration', 1, 'Enumerate'),
-(42, 12, 'Enumerate', 'Enumeration', 1, 'Enumerate');
+(43, 12, 'adada', 'Enumeration', 1, 'adada'),
+(44, 12, 'adada', 'Enumeration', 1, 'adada'),
+(45, 12, 'adada', 'Enumeration', 1, 'adada'),
+(46, 12, 'adada', 'Enumeration', 1, 'adada'),
+(47, 12, 'adada', 'Enumeration', 1, 'adada'),
+(48, 13, 'ff', 'Multiple Choice', 2, '');
 
 -- --------------------------------------------------------
 
@@ -338,20 +388,7 @@ CREATE TABLE `question_order` (
 --
 
 INSERT INTO `question_order` (`order_id`, `member_id`, `question_id`, `q_order`, `answer`, `answer_status`, `quiz_id`, `q_score`, `group_id`) VALUES
-(25, 2, 12, '1', 'A', 0, 12, 3, 1),
-(26, 2, 11, '2', 'manieja', 1, 12, 2, 1),
-(27, 2, 11, '2', 'manieja', 0, 12, 2, 1),
-(28, 2, 12, '1', 'A', 1, 12, 3, 1),
-(29, 10, 36, '1', '', 0, 12, 0, 0),
-(30, 10, 40, '2', '', 0, 12, 0, 0),
-(31, 10, 33, '3', '', 0, 12, 0, 0),
-(32, 10, 37, '4', '', 0, 12, 0, 0),
-(33, 10, 41, '5', '', 0, 12, 0, 0),
-(34, 10, 34, '6', '', 0, 12, 0, 0),
-(35, 10, 38, '7', '', 0, 12, 0, 0),
-(36, 10, 42, '8', '', 0, 12, 0, 0),
-(37, 10, 35, '9', '', 0, 12, 0, 0),
-(38, 10, 39, '10', '', 0, 12, 0, 0);
+(56, 2, 48, '1', 'A', 1, 13, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -373,7 +410,8 @@ CREATE TABLE `quiz` (
 --
 
 INSERT INTO `quiz` (`quiz_id`, `quiz_title`, `quiz_instruction`, `member_id`, `quiz_duration`, `quiz_total`) VALUES
-(12, 'Quiz 1', 'Sample', 1, '1', 40);
+(12, 'Quiz 1', 'Sample', 1, '1', 5),
+(13, 'fdddd', 'dfd', 1, '1', 2);
 
 -- --------------------------------------------------------
 
@@ -388,6 +426,13 @@ CREATE TABLE `quiz_result` (
   `quiz_taken` date NOT NULL,
   `grade_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `quiz_result`
+--
+
+INSERT INTO `quiz_result` (`quiz_result_id`, `quiz_id`, `member_id`, `quiz_taken`, `grade_id`) VALUES
+(24, 13, 2, '2017-08-19', 24);
 
 -- --------------------------------------------------------
 
@@ -410,7 +455,9 @@ INSERT INTO `subject` (`subject_id`, `subject_code`, `subject_title`) VALUES
 (3, 'IS221', 'DFOS'),
 (4, 'IS225', 'IS Programming'),
 (5, 'Rizal', 'Life and Works of Rizal'),
-(7, 'IS0001', 'Sample');
+(7, 'IS0001', 'Sample'),
+(1021, 'IS 111', 'Fundamentals'),
+(1022, 'IS 112', 'HCI');
 
 -- --------------------------------------------------------
 
@@ -504,6 +551,12 @@ ALTER TABLE `group_quiz`
   ADD PRIMARY KEY (`group_quiz_id`);
 
 --
+-- Indexes for table `history_logs`
+--
+ALTER TABLE `history_logs`
+  ADD PRIMARY KEY (`log_id`);
+
+--
 -- Indexes for table `member`
 --
 ALTER TABLE `member`
@@ -582,7 +635,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 --
 -- AUTO_INCREMENT for table `cys`
 --
@@ -597,7 +650,7 @@ ALTER TABLE `enrol`
 -- AUTO_INCREMENT for table `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `group`
 --
@@ -607,57 +660,62 @@ ALTER TABLE `group`
 -- AUTO_INCREMENT for table `group_post`
 --
 ALTER TABLE `group_post`
-  MODIFY `group_post_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `group_post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `group_quiz`
 --
 ALTER TABLE `group_quiz`
-  MODIFY `group_quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `group_quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `history_logs`
+--
+ALTER TABLE `history_logs`
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `notif`
 --
 ALTER TABLE `notif`
-  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `notif_stat`
 --
 ALTER TABLE `notif_stat`
-  MODIFY `notif_stat_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `notif_stat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT for table `question_order`
 --
 ALTER TABLE `question_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `quiz_result`
 --
 ALTER TABLE `quiz_result`
-  MODIFY `quiz_result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `quiz_result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1023;
 --
 -- AUTO_INCREMENT for table `submission`
 --

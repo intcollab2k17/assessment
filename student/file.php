@@ -1,3 +1,4 @@
+			<div class="row">
 				<div class="col-md-12">
 					<!-- BEGIN ALERTS PORTLET-->
 							<div class="note note-info">
@@ -11,4 +12,5 @@
 							</div>
 					
 				</div>
+			</div>
 

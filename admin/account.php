@@ -28,7 +28,7 @@ include('session.php');
 			<div class="row">
 				<div class="col-md-12">
 					<!-- BEGIN PROFILE SIDEBAR -->
-					<?php include('profile_sidebar.php');?>
+					<?php //include('profile_sidebar.php');?>
 					<!-- END BEGIN PROFILE SIDEBAR -->
 					<!-- BEGIN PROFILE CONTENT -->
 <?php
@@ -91,7 +91,7 @@ include('session.php');
 													<div class="form-group">
 													<input type="hidden" class="form-control" id="pass1" name="oldpass" value="<?php echo $row['admin_password'];?>">
 														<label class="control-label">Current Password</label>
-														<input type="password" class="form-control"oninput="check1(this)" id="pass2" required>
+														<input type="password" class="form-control" oninput="check1(this)" id="pass2" required>
 													</div>
 													<div class="form-group">
 														<label class="control-label">New Password</label>

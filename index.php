@@ -343,7 +343,7 @@
                   </div>
                     <div class="row">
                       <div class="col-lg-8 col-md-offset-4 padding-left-0">
-                        <a href="#forget">Forget Password?</a>
+                        <a href="recover.php">Forget Password?</a>
                       </div>
                     </div>
                     <div class="row">
@@ -361,38 +361,6 @@
     </div>
   </div>
   <!-- Portfolio block END -->
-  <!-- Choose us block BEGIN -->
-  <div class="choose-us-block content text-center margin-bottom-40" id="forget">
-    <div class="container">
-      <h2>Recover <strong>password</strong></h2>
-      <div class="row">
-      	<div class="col-md-9 col-sm-9">
-            <div class="content-form-page">
-              <div class="row">
-                <div class="col-md-8 col-sm-8 col-md-offset-3">
-                  <form class="form-horizontal form-without-legend" role="form" method="post" action="sendemail.php">                    
-                    <div class="form-group">
-                      <label for="email" class="col-lg-4 control-label">Email</label>
-                      <div class="col-lg-8">
-                        <input type="email" class="form-control" id="email" required name="email">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-5">
-                        <button type="submit" class="btn btn-primary">Send</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-      </div>
-    </div>
-  </div>
-  <!-- Choose us block END -->
-  
   
   <!-- BEGIN FOOTER -->
   <div class="footer">

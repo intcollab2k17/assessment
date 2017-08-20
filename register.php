@@ -40,6 +40,9 @@
 
 								echo "<script type='text/javascript'>alert('Successfully registered! You may now login!');</script>";
 
+								$date=date("Y-m-d H:i");
+			  	mysqli_query($con,"INSERT INTO history_logs(log,log_date,member_id) VALUES('successfully registered!','$date','$id')")or die(mysqli_error($con));  
+
 							}
 		 					else
 		 					{
