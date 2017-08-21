@@ -2,20 +2,6 @@
 include('session.php');
 ?>
 <!DOCTYPE html>
-<!-- 
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
-Version: 3.7.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
 <html lang="en">
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
@@ -26,16 +12,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 </head>
 <!-- END HEAD -->
-<!-- BEGIN BODY -->
-<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
-<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
-<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
-<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
-<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
-<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
-<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
-<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
-<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+
 <body class="page-md page-header-fixed page-sidebar-closed page-sidebar-closed-hide-logo">
 <?php include('header.php');?>
 
@@ -71,6 +48,9 @@ License: You must have a valid license purchased only from themeforest(the above
 							<thead>
 							<tr>
 								<th>
+									 ID Number
+								</th>
+								<th>
 									 Last Name
 								</th>
 								<th>
@@ -101,6 +81,9 @@ License: You must have a valid license purchased only from themeforest(the above
 			
 ?>								
 							<tr>
+								<td>
+									 <?php echo $row2['id_no'];?>
+								</td>
 								<td>
 									 <?php echo $row2['member_last'];?>
 								</td>
@@ -133,6 +116,10 @@ License: You must have a valid license purchased only from themeforest(the above
 											
 											<div class="portlet-body form">
 												<form role="form" method="post" action="faculty_update.php">
+													<div class="form-group form-md-line-input form-md-floating-label">
+														<input type="text" class="form-control" id="form_control_1" name="idno" value="<?php echo $row2['id_no'];?>" required>
+														<span class="help-block">ID Number</span>
+													</div>
 													<div class="form-group form-md-line-input form-md-floating-label">
 														<input type="hidden" class="form-control" id="form_control_1" name="id" value="<?php echo $row2['member_id'];?>" required>
 														<input type="text" class="form-control" id="form_control_1" name="last" value="<?php echo $row2['member_last'];?>" required>
@@ -217,7 +204,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											</div>
 											<div class="portlet-body form">
 												<form method="post" enctype="multipart/form-data">
-											<p style="font-size:16px;line-height:34px;">Follow format to upload successfully. Columns Last Name, First Name and should be in <b>CSV</b> format</p>
+											<p style="font-size:16px;line-height:34px;">Follow format to upload successfully. Columns ID Number, Last Name, First Name and should be in <b>CSV</b> format</p>
 											<input type="file" name="image">
 											<input type="submit" name="import" value="Import" class="btn btn-primary">
 										    </form>									
@@ -237,6 +224,11 @@ License: You must have a valid license purchased only from themeforest(the above
 											</div>
 											<div class="portlet-body form">
 												<form role="form" method="post" action="faculty_save.php">
+													<div class="form-group form-md-line-input form-md-floating-label">
+														<input type="text" class="form-control" id="form_control_1" name="idno" required>
+														<label for="form_control_1">ID Number</label>
+														<span class="help-block">ID Number</span>
+													</div>
 													<div class="form-group form-md-line-input form-md-floating-label">
 														<input type="text" class="form-control" id="form_control_1" name="last" required>
 														<label for="form_control_1">Last Name</label>
@@ -320,7 +312,7 @@ if (isset($_POST['import']))
 	$handle = fopen($_FILES['image']['tmp_name'], "r");
 
 	while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-		mysqli_query($con,"INSERT into member(member_last,member_first,member_type) values('$data[0]','$data[1]','Faculty')");
+		mysqli_query($con,"INSERT into member(id_no,member_last,member_first,member_type) values('$data[0]','$data[1]','$data[2]','Faculty')");
 		
 		}
 

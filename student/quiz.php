@@ -1,4 +1,6 @@
-<?php include('session.php');?>
+<?php include('session.php');
+error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <!--<![endif]-->

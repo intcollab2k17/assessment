@@ -22,9 +22,9 @@
 						</li>
 <?php
 
-	$id=$_SESSION['id'];
+	$mid=$_SESSION['id'];
 	
-		$queryg=mysqli_query($con,"select * from `group` natural join subject where group_stat='Active' order by subject_code")or die(mysqli_error($con));
+		$queryg=mysqli_query($con,"select * from `group` natural join subject where group_stat='Active' and member_id='$mid' order by subject_code")or die(mysqli_error($con));
 				 $countassign=mysqli_num_rows($queryg);
 				  if ($countassign<1) echo "<h4 class='text-red'>You have not created any class yet!</h4>";
 						while($rowg=mysqli_fetch_array($queryg))
@@ -59,7 +59,7 @@
 					<ul class="sub-menu">
 <?php
 		
-		$query1=mysqli_query($con,"select * from `group` natural join subject where group_stat='Active' order by subject_code")or die(mysqli_error($con));
+		$query1=mysqli_query($con,"select * from `group` natural join subject where group_stat='Active' and member_id='$mid' order by subject_code")or die(mysqli_error($con));
 				 $countassign=mysqli_num_rows($query1);
 				  if ($countassign<1) echo "<h4 class='text-red'>You have not created any class yet!</h4>";
 						while($row2=mysqli_fetch_array($query1))

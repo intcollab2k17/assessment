@@ -49,7 +49,7 @@
 
 				  ?>
 											</span>
-										</div>
+										</div><a href="quiz.php" class="btn btn-primary pull-right">Done</a>
 									</div>
 									<div class="portlet-body">
 										<!--BEGIN TABS-->

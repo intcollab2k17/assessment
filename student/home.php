@@ -1,4 +1,6 @@
-<?php include('session.php');?>
+<?php include('session.php');
+error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <!--<![endif]-->
@@ -149,99 +151,59 @@ if($row1['post_type']=='assignment')
 							<div class="col-md-4">
 							<div class="row">
 								<div class="col-md-12">
+										<div class="portlet box blue">
+										<div class="portlet-title">
+											<div class="caption">
+												<i class="icon-pin"></i>Notes
+											</div>
+										</div>
+										<div class="portlet-body">
+											<div class="row">
+												<div class="col-sm-12 col-md-12">
+													<table class="table table-striped table-bordered table-advance table-hover">
+								
+								<tbody>
+<?php
+	
+	$query1=mysqli_query($con,"select * from notes where member_id='$id' order by notes_id desc")or die(mysqli_error());
+		
+		$countassign=mysqli_num_rows($query1);
+		if ($countassign<1) echo "
+			<div class='alert alert-danger col-md-12'>
+				No notes created!
+			</div>";
+			while($row2=mysqli_fetch_array($query1))
+			{
+			
+?>										
+								<tr>
+									<td>
+										 <?php echo $row2['notes'];?>
+									</td>
+									
+								</tr>
+<?php $i++;}?>								
+								</tbody>
+								</table>			
+												</div>
+											</div>
+										</div>
+									</div>
 									<!-- BEGIN SAMPLE FORM PORTLET-->
 										<div class="portlet light">
 											<div class="portlet-title">
 												<div class="caption font-red-sunglo">
 													<i class=" icon-notebook font-red-sunglo"></i>
-													<span class="caption-subject bold uppercase"> Add Post</span>
+													<span class="caption-subject bold uppercase"> Add Notes</span>
 												</div>
 											</div>
 											<div class="portlet-body form">
-												<form role="form" method="post" action="post_add.php" enctype='multipart/form-data'>
+												<form role="form" method="post" action="notes_add.php" enctype='multipart/form-data'>
 													<div class="form-group form-md-line-input form-md-floating-label">
-														<input type="text" class="form-control" id="form_control_1" name="title" required>
-														<label for="form_control_1">Post Title</label>
-														<span class="help-block">Title of Post</span>
-													</div>
-													<div class="form-group form-md-line-input form-md-floating-label">
-														<input type="text" class="form-control" id="form_control_1" name="desc" required>
-														<label for="form_control_1">Post Description/Instruction</label>
-														<span class="help-block">Description/Instruction of Post</span>
-													</div>
-													<div class="form-group">
-														<div class="fileinput fileinput-new" data-provides="fileinput">
-															<div class="fileinput-new thumbnail" style="width: 200px;">
-															</div>
-															<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
-															</div>
-															<div>
-																<span class="btn default btn-file">
-																<span class="fileinput-new">
-																Select file </span>
-																<span class="fileinput-exists">
-																Change </span>
-																<input type="file" name="image">
-																</span>
-																<a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput">
-																Remove </a>
-															</div>
-														</div>
-													</div>
-													<div class="form-group form-md-checkboxes">
-															<label>Check if assignment</label>
-
-															<div class="md-checkbox-inline">			
-																<div class="md-checkbox">
-																	<input type="checkbox" id="assign" class="md-check" value="assign" name="assign">
-																	<label for="assign">
-																	<span class="inc"></span>
-																	<span class="check"></span>
-																	<span class="box"></span>
-																	Assignment </label>
-																</div>
-															</div>
-														</div>
-													<div class="form-group form-md-line-input form-md-floating-label" id="points">
-														<input type="number" class="form-control" id="form_control_1" name="points">
-														<label for="form_control_1">Points</label>
-														<span class="help-block">No. of Points</span>
+														<textarea class="form-control" id="form_control_1" name="notes" rows="5" required></textarea>
+														<label for="form_control_1">Notes</label>
 													</div>
 													
-													<div class="form-body">
-														<div class="form-group form-md-line-input form-md-floating-label" id="date">
-															<input class="form-control form-control-inline input-medium date-picker" size="16" type="text" value="" name="date">
-															<label for="form_control_1">Due Date</label>
-													<span class="help-block">Due Date for Assignment</span>
-														</div>
-														<div class="form-group form-md-line-input form-md-floating-label" id="time">
-																	<input type="text" class="form-control timepicker timepicker-no-seconds" name="time">
-																	<span class="input-group-btn">
-																	Time
-																	</span>
-															
-														</div>
-														<div class="form-group form-md-checkboxes">
-															<label>Groups</label>
-
-															<div class="md-checkbox-inline">
-<?php
-			
-		$query=mysqli_query($con,"select * from `group` natural join subject where member_id='$id'")or die(mysqli_error());
-  			while ($row=mysqli_fetch_array($query)){
-?>																
-																<div class="md-checkbox">
-																	<input type="checkbox" id="<?php echo $row['group_id'];?>" class="md-check" value="<?php echo $row['group_id'];?>" name="group[]">
-																	<label for="<?php echo $row['group_id'];?>">
-																	<span class="inc"></span>
-																	<span class="check"></span>
-																	<span class="box"></span>
-																	<?php echo $row['subject_code']." ".$row['cys'];?> </label>
-																</div>
-<?php }?>																													
-															</div>
-														</div>
-													</div>
 													<div class="form-actions noborder">
 														<button type="submit" class="btn blue">Save</button>
 														<button type="reset" class="btn default">Cancel</button>
@@ -250,33 +212,7 @@ if($row1['post_type']=='assignment')
 											</div>
 										</div>
 										<!-- END SAMPLE FORM PORTLET-->
-									<div class="portlet box blue">
-										<div class="portlet-title">
-											<div class="caption">
-												<i class="fa fa-cogs"></i>Recently Added
-											</div>
-										</div>
-										<div class="portlet-body">
-											<div class="row">
-												<div class="col-sm-12 col-md-6">
-													<div class="thumbnail">
-														<img src="../images/default.gif" alt="100%x200" style="width: 100%;display: block;" data-src="holder.js/100%x200">
-														<div class="caption">
-															<h5>First Name </h5>
-														</div>
-													</div>
-												</div>
-												<div class="col-sm-12 col-md-6">
-													<div class="thumbnail">
-														<img src="../images/default.gif" alt="100%x200" style="width: 100%; display: block;" data-src="holder.js/100%x200">
-														<div class="caption">
-															<h5>First Name</h5>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+									
 								</div>
 									
 								</div><!--end row-->	

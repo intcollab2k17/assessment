@@ -481,12 +481,12 @@
 													</div>
 													<div class="form-body">
 														<div class="form-group form-md-line-input form-md-floating-label" id="date">
-															<input class="form-control form-control-inline input-medium date-picker" size="16" type="text" value="" name="date">
+															<input class="form-control form-control-inline input-medium date-picker" size="16" type="date" name="date">
 													
 													<span class="help-block">Date of Quiz</span>
 														</div>
 														<div class="form-group form-md-line-input form-md-floating-label" id="time">
-																	<input type="text" class="form-control timepicker timepicker-no-seconds" name="time">
+																	<input type="time" class="form-control timepicker timepicker-no-seconds" name="time">
 																	<span class="input-group-btn">
 																	Time of Quiz
 																	</span>

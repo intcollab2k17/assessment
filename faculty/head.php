@@ -31,7 +31,7 @@
 <link rel="shortcut icon" href="favicon.ico"/>
 <style type="text/css">
 	.page-header-fixed .page-container{
-		    margin-top: -10px;
+			    margin-top: -5px;
 
 	}
 

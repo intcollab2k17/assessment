@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php //session_start();?>
 <!-- BEGIN HEADER -->
 <div class="page-header md-shadow-z-1-i navbar navbar-fixed-top">
 	<!-- BEGIN HEADER INNER -->
@@ -20,7 +20,7 @@
 		<!-- BEGIN PAGE ACTIONS -->
 <?php 
 	$id=$_SESSION['id'];
-	$query=mysqli_query($con,"select * from notif_stat where member_id='$id' and read_status='0'")or die(mysqli_error($con));
+	$query=mysqli_query($con,"select * from notif_stat natural join notif where member_id='$id' and read_status='0' and status='student'")or die(mysqli_error($con));
 		$count=mysqli_num_rows($query);
 ?>		
 		<!-- BEGIN PAGE TOP -->
@@ -37,7 +37,7 @@
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default" style="width: 300px!important">
 <?php 
-	$q1=mysqli_query($con,"select * from notif_stat natural join notif where member_id='$id' and read_status='0'")or die(mysqli_error($con));
+	$q1=mysqli_query($con,"select * from notif_stat natural join notif where member_id='$id' and read_status='0' and status='student'")or die(mysqli_error($con));
 		while($r1=mysqli_fetch_array($q1))
 		{
 			$gid=$r1['group_id'];	

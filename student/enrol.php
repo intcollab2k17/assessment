@@ -24,10 +24,15 @@ include('../includes/dbcon.php');
 				    	mysqli_query($con,"INSERT INTO notif(notif,group_id,link,status) VALUES('$notif','$gid','$link','faculty')")or die(mysqli_error($con));
 
 				    	$nid=mysqli_insert_id($con);
-				    
-				    	mysqli_query($con,"INSERT INTO notif_stat(notif_id,member_id,read_status) VALUES('$nid','$id','0')")or die(mysqli_error($con));	
 
-			echo "<script type='text/javascript'>alert('Successfully enrolled in this group!');</script>";
+			$query1=mysqli_query($con,"select *,`group`.member_id as mid from enrol left join `group` on enrol.group_id=`group`.group_id where enrol.group_id='$gid' and enrol.member_id='$id'")or die(mysqli_error());
+	
+				$row1=mysqli_fetch_array($query1);
+					$mid=$row1['mid'];
+					    
+				    	mysqli_query($con,"INSERT INTO notif_stat(notif_id,member_id,read_status) VALUES('$nid','$mid','0')")or die(mysqli_error($con));	
+
+			echo "<script type='text/javascript'>alert('Successfully enrolled in this group! Wait for Faculty enrolment approval');</script>";
 			echo "<script>document.location='search.php'</script>";   
 		}
 	

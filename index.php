@@ -261,6 +261,12 @@
                         </div>
                       </div>
                       <div class="form-group">
+                        <label for="idno" class="col-lg-4 control-label">ID Number <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <input type="text" class="form-control" id="idno" name="idno" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
                         <label for="email" class="col-lg-4 control-label">Email <span class="require">*</span></label>
                         <div class="col-lg-8">
                           <input type="email" class="form-control" id="email" name="email" required>
@@ -321,9 +327,9 @@
                 <div class="col-md-8 col-sm-8 col-md-offset-3">
                   <form class="form-horizontal form-without-legend" role="form" action="login.php" method="post">
                     <div class="form-group">
-                      <label for="email" class="col-lg-4 control-label">Email <span class="require">*</span></label>
+                      <label for="idno" class="col-lg-4 control-label">ID Number <span class="require">*</span></label>
                       <div class="col-lg-8">
-                        <input type="email" class="form-control" id="email" name="email">
+                        <input type="text" class="form-control" id="idno" name="idno">
                       </div>
                     </div>
                     <div class="form-group">

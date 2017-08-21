@@ -1,8 +1,8 @@
 <?php include('session.php');
 
  $id = $_SESSION['id'];
- $gid = $_REQUEST['gid'];
- $eid = $_REQUEST['eid'];
+ $gid = $_POST['gid'];
+ $eid = $_POST['eid'];
 
  mysqli_query($con,"UPDATE enrol SET status='approved' where enrol_id='$eid'")
  or die(mysqli_error($con)); 

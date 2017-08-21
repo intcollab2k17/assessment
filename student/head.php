@@ -31,3 +31,13 @@
 <link href="../assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
+<style type="text/css">
+	.page-header-fixed .page-container{
+			    margin-top: -5px;
+
+	}
+
+	.page-header.md-shadow-z-1-i.navbar.navbar-fixed-top {
+		position:relative !important;
+	}
+</style>

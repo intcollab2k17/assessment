@@ -204,10 +204,87 @@ if($row1['post_type']=='assignment')
 														 <?php echo $row2['cys'];?>
 													</td>
 													<td>
-														<a href="accept.php?gid=<?php echo $gid;?>&eid=<?php echo $eid;?>" class="btn default btn-xs purple">
-														<i class="icon-user-follow"></i> Accept </a>
+														<a class="btn default btn-xs blue" data-toggle="modal" href="#accept<?php echo $gid;?>">
+														<i class="glyphicon glyphicon-ok"></i>  </a>
+														<a class="btn default btn-xs red" data-toggle="modal" href="#decline<?php echo $gid;?>">
+														<i class="glyphicon glyphicon-remove"></i>  </a>
 													</td>
 												</tr>
+<!-- /.delete -->
+							<div class="modal fade bs-modal-sm" id="accept<?php echo $gid;?>" tabindex="-1" role="dialog" aria-hidden="true">
+								<div class="modal-dialog modal-sm">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+											<h4 class="modal-title">Accept Request</h4>
+										</div>
+										<div class="modal-body">
+											<!-- BEGIN SAMPLE FORM PORTLET-->
+											<div class="portlet light">
+												
+												<div class="portlet-body form">
+													<form role="form" method="post" action="accept.php">
+														<div class="form-group form-md-line-input form-md-floating-label">
+															<input type="hidden" name="gid" value="<?php echo $gid;?>" required>
+															<input type="hidden" name="eid" value="<?php echo $eid;?>" required>
+															Are you sure you want to enrol <?php echo $row2['member_last'].", ".$row2['member_first'];?> in this class?
+														</div>
+														
+														
+													
+												</div>
+											</div>
+											<!-- END SAMPLE FORM PORTLET-->
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn default" data-dismiss="modal">Close</button>
+											<button type="submit" class="btn blue">Enrol</button>
+										</div>
+											</form>
+									</div>
+									<!-- /.modal-content -->
+								</div>
+								<!-- /.modal-dialog -->
+							</div>
+							<!-- /.modal -->
+							<!-- /.delete -->
+							<div class="modal fade bs-modal-sm" id="decline<?php echo $gid;?>" tabindex="-1" role="dialog" aria-hidden="true">
+								<div class="modal-dialog modal-sm">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+											<h4 class="modal-title">Decline Request</h4>
+										</div>
+										<div class="modal-body">
+											<!-- BEGIN SAMPLE FORM PORTLET-->
+											<div class="portlet light">
+												
+												<div class="portlet-body form">
+													<form role="form" method="post" action="decline.php">
+														<div class="form-group form-md-line-input form-md-floating-label">
+															<input type="hidden" name="gid" value="<?php echo $gid;?>" required>
+															<input type="hidden" name="eid" value="<?php echo $eid;?>" required>
+															Are you sure you want to decline <?php echo $row2['member_last'].", ".$row2['member_first'];?> request to enrol in this class?
+														</div>
+														
+														
+													
+												</div>
+											</div>
+											<!-- END SAMPLE FORM PORTLET-->
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn default" data-dismiss="modal">Close</button>
+											<button type="submit" class="btn blue">Decline</button>
+										</div>
+											</form>
+									</div>
+									<!-- /.modal-content -->
+								</div>
+								<!-- /.modal-dialog -->
+							</div>
+							<!-- /.modal -->
+
 				<?php }?>								
 												</tbody>
 												</table>

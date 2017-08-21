@@ -8,6 +8,9 @@
 										#
 									</th>
 									<th>
+										<i class="icon-note"></i> ID Number
+									</th>
+									<th>
 										<i class="icon-user"></i> Last Name
 									</th>
 									<th class="hidden-xs">
@@ -16,9 +19,7 @@
 									<th class="hidden-xs">
 										<i class="icon-envelope-open"></i> Email
 									</th>
-									<th>
-										<i class="icon-note"></i> Action
-									</th>
+									
 									<th>
 									</th>
 								</tr>
@@ -48,6 +49,11 @@
 									<td class="hidden-xs">
 										<div class="success">
 										</div>
+										<?php echo $row2['id_no'];?>
+									</td>
+									<td class="hidden-xs">
+										<div class="success">
+										</div>
 										<?php echo $row2['member_last'];?>
 									</td>
 									<td class="hidden-xs">
@@ -56,10 +62,7 @@
 									<td>
 										 <?php echo $row2['email'];?>
 									</td>
-									<td>
-										<a href="javascript:;" class="btn default btn-xs purple">
-										<i class="fa fa-edit"></i> Edit </a>
-									</td>
+									
 								</tr>
 <?php $i++;}?>								
 								</tbody>

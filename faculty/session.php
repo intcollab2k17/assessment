@@ -5,4 +5,5 @@ header('Location:../index.php');
 endif;
 
 include('../includes/dbcon.php');
+date_default_timezone_set("Asia/Manila");
 ?>

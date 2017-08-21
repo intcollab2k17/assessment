@@ -2,6 +2,7 @@
  
 	  $first=$_POST['first'];
 	  $last=$_POST['last'];
+	  $idno=$_POST['idno'];
 	  $email =$_POST['email'];
 	  $password =md5($_POST['password']);
 	  $type =$_POST['type'];
@@ -9,16 +10,16 @@
 		
 		include('includes/dbcon.php');
 	    
-	    $query1=mysqli_query($con,"SELECT email from member where email='$email'")or die(mysqli_error($con));
-	    	$count = mysqli_num_rows($query1);
-	    	if ($count>0)
-	    	{
-	    		echo "<script type='text/javascript'>alert('Sorry! Email already taken!');</script>";
-				echo "<script>document.location='index.php';window.history.back();</script>";
-	    	}
-	    	else
-	    	{
-	    		$query=mysqli_query($con,"SELECT * from member where member_first='$first' and member_last='$last' and member_type='$type'")or die(mysqli_error($con));
+	   //  $query1=mysqli_query($con,"SELECT id_no from member where id_no='$idno'")or die(mysqli_error($con));
+	   //  	$count = mysqli_num_rows($query1);
+	   //  	if ($count>0)
+	   //  	{
+	   //  		echo "<script type='text/javascript'>alert('Sorry! ID Number already registered!');</script>";
+				// echo "<script>document.location='index.php';window.history.back();</script>";
+	   //  	}
+	   //  	else
+	   //  	{
+	    		$query=mysqli_query($con,"SELECT * from member where id_no='$idno' and member_first='$first' and member_last='$last' and member_type='$type'")or die(mysqli_error($con));
 
 					$num_rows = mysqli_num_rows($query);
 
@@ -36,7 +37,7 @@
 						{
 							if ($row['reg_status']==0)
 							{
-							 mysqli_query($con,"UPDATE member SET email='$email',reg_status='1',date_registered='$date',password='$password' where member_id='$id'")or die(mysqli_error($con)); 
+							 mysqli_query($con,"UPDATE member SET id_no='$idno',email='$email',reg_status='1',date_registered='$date',password='$password' where member_id='$id'")or die(mysqli_error($con)); 
 
 								echo "<script type='text/javascript'>alert('Successfully registered! You may now login!');</script>";
 
@@ -51,11 +52,7 @@
 		 					}
 									echo "<script>document.location='index.php'</script>";
 						}
-	    	}
-
-		
-
-
+	    	//}
 
 ?>
 
