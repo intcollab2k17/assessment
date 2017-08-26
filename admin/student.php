@@ -48,6 +48,9 @@ include('session.php');
 							<thead>
 							<tr>
 								<th>
+									 ID NO
+								</th>
+								<th>
 									 Last Name
 								</th>
 								<th>
@@ -83,6 +86,9 @@ include('session.php');
 ?>								
 							<tr>
 								<td>
+									 <?php echo $row2['id_no'];?>
+								</td>
+								<td>
 									 <?php echo $row2['member_last'];?>
 								</td>
 								<td>
@@ -117,6 +123,10 @@ include('session.php');
 											
 											<div class="portlet-body form">
 												<form role="form" method="post" action="student_update.php">
+													<div class="form-group form-md-line-input form-md-floating-label">
+														<input type="text" class="form-control" id="form_control_1" name="idno" value="<?php echo $row2['id_no'];?>" required>
+														<span class="help-block">ID Number</span>
+													</div>
 													<div class="form-group form-md-line-input form-md-floating-label">
 														<input type="hidden" class="form-control" id="form_control_1" name="id" value="<?php echo $row2['member_id'];?>" required>
 														<input type="text" class="form-control" id="form_control_1" name="last" value="<?php echo $row2['member_last'];?>" required>
@@ -219,7 +229,7 @@ include('session.php');
 											</div>
 											<div class="portlet-body form">
 												<form method="post" enctype="multipart/form-data">
-											<p style="font-size:16px;line-height:34px;">Follow format to upload successfully. Columns Last Name, First Name, Course Yr. & Section and should be in <b>CSV</b> format</p>
+											<p style="font-size:16px;line-height:34px;">Follow format to upload successfully. Columns ID Number, Last Name, First Name, Course Yr. & Section and should be in <b>CSV</b> format</p>
 											<input type="file" name="image">
 											<input type="submit" name="import" value="Import" class="btn btn-primary">
 										    </form>									
@@ -239,6 +249,11 @@ include('session.php');
 											</div>
 											<div class="portlet-body form">
 												<form role="form" method="post" action="student_save.php">
+													<div class="form-group form-md-line-input form-md-floating-label">
+														<input type="text" class="form-control" id="form_control_1" name="idno" required>
+														<label for="form_control_1">ID Number</label>
+														<span class="help-block">ID Number</span>
+													</div>
 													<div class="form-group form-md-line-input form-md-floating-label">
 														<input type="text" class="form-control" id="form_control_1" name="last" required>
 														<label for="form_control_1">Last Name</label>
@@ -350,7 +365,7 @@ if (isset($_POST['import']))
 	$handle = fopen($_FILES['image']['tmp_name'], "r");
 
 	while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-		mysqli_query($con,"INSERT into member(member_last,member_first,member_type,cys) values('$data[0]','$data[1]','Student','$data[2]')");
+		mysqli_query($con,"INSERT into member(member_last,member_first,member_type,cys,id_no) values('$data[0]','$data[1]','Student','$data[2]','$data[3]')");
 		
 		}
 
