@@ -122,8 +122,60 @@
 ?>
 																
 																
-															
-														
+				<!--feedback-->															
+				<div class="media">
+										<h3>Comments</h3>
+										<a href="javascript:;" class="pull-left">
+										<img alt="" src="../../assets/admin/pages/media/blog/9.jpg" class="media-object">
+										</a>
+										<div class="media-body">
+											<h4 class="media-heading">Media heading <span>
+											5 hours ago / <a href="javascript:;">
+											Reply </a>
+											</span>
+											</h4>
+											<p>
+												 Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+											</p>
+											<hr>
+											<!-- Nested media object -->
+											<div class="media">
+												<a href="javascript:;" class="pull-left">
+												<img alt="" src="../../assets/admin/pages/media/blog/5.jpg" class="media-object">
+												</a>
+												<div class="media-body">
+													<h4 class="media-heading">Media heading <span>
+													17 hours ago / <a href="javascript:;">
+													Reply </a>
+													</span>
+													</h4>
+													<p>
+														 Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+													</p>
+												</div>
+											</div>
+											<!--end media-->
+											<hr>
+											<div class="media">
+												<a href="javascript:;" class="pull-left">
+												<img alt="" src="../../assets/admin/pages/media/blog/7.jpg" class="media-object">
+												</a>
+												<div class="media-body">
+													<h4 class="media-heading">Media heading <span>
+													2 days ago / <a href="javascript:;">
+													Reply </a>
+													</span>
+													</h4>
+													<p>
+														 Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+													</p>
+												</div>
+											</div>
+											<!--end media-->
+										</div>
+									</div>										
+
+				<!--ffedback-->										
 			</div><!--item body-->
 		</div><!--item-->
 	
