@@ -146,15 +146,15 @@ include('../includes/dbcon.php');
 	}
 		   
 	  $date=date("Y-m-d");
-	  $points=mysqli_query($con,"select *,SUM(points) as spoints from question where quiz_id='$quiz_id' and member_id='$sid' and (question_type='Multiple Choice' or question_type='Modified True or False' or question_type='True or False' or question_type='Identification')")or die(mysqli_error($con));	
+	  $points=mysqli_query($con,"select *,SUM(points) as spoints from question where quiz_id='$quiz_id' and (question_type='Multiple Choice' or question_type='Modified True or False' or question_type='True or False' or question_type='Identification')")or die(mysqli_error($con));	
 			$row4=mysqli_fetch_array($points);
 			$total=$row4['spoints'];
 			
-	  $mpoints=mysqli_query($con,"select *,SUM(points) as mpoints from question natural join answer where quiz_id='$quiz_id' and question_type='Enumeration' and member_id='$sid'")or die(mysqli_error($con));	
+	  $mpoints=mysqli_query($con,"select *,SUM(points) as mpoints from question natural join answer where quiz_id='$quiz_id' and question_type='Enumeration'")or die(mysqli_error($con));	
 			$row5=mysqli_fetch_array($mpoints);
 			$total=$total+$row5['mpoints'];
 	
-	$mpoints1=mysqli_query($con,"select *,SUM(points) as mpoints1 from question natural join answer where quiz_id='$quiz_id' and question_type='Matching Type' and member_id='$sid'")or die(mysqli_error($con));	
+	$mpoints1=mysqli_query($con,"select *,SUM(points) as mpoints1 from question natural join answer where quiz_id='$quiz_id' and question_type='Matching Type'")or die(mysqli_error($con));	
 			$row6=mysqli_fetch_array($mpoints1);
 			$total=$total+$row5['mpoints']+$row6['mpoints1'];
 			

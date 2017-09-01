@@ -64,9 +64,7 @@
 														  <option value="Multiple Choice">Multiple Choice</option>
 														  <option value="True or False">True or False</option>
 														  <option value="Modified True or False">Modified True or False</option>
-														  <option value="Matching Type">Matching Type</option>
 														  <option value="Identification">Identification</option>
-														  <option value="Enumeration">Enumeration</option>
 													  </select>
 													</div>
 													<div class="col-md-4">

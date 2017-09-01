@@ -15,7 +15,7 @@
 					$count=mysqli_query($con,"select * from answer where question_id='$question_id'")or die(mysqli_error());
 						$result=mysqli_num_rows($count);
 						$pts=$p*$result;
-						mysqli_query($con,"UPDATE quiz SET quiz_total=quiz_total-'$pts' where quiz_id='$qid'")or die(mysqli_error($con)); 
+						//mysqli_query($con,"UPDATE quiz SET quiz_total=quiz_total-'$pts' where quiz_id='$qid'")or die(mysqli_error($con)); 
 				}
 			
 

@@ -196,71 +196,7 @@ date_default_timezone_set("Asia/Manila");
 												  </div>
 												";
 											}
-											if ($row['question_type']=="Enumeration")
-											{
-											  $i=0;
-											 $qt=$row['question_type']; 
-
-											  $queryen=mysqli_query($con,"select * from answer natural join question where question_type='Enumeration' and quiz_id='$quiz_id'")or die(mysqli_error($con));
-
-													while($rowen=mysqli_fetch_array($queryen)){
-												 		$question1=$rowen['question_id']; 
-
-												 		$queryan=mysqli_query($con,"select * from question_order where question_id='$question1' and quiz_id='$quiz_id' and member_id='$sid'")or die(mysqli_error($con));
-
-														$rowan=mysqli_fetch_array($queryan);
-												 		$ans=$rowan['answer']; 
-
-												      echo "
-													<div class='col-md-12'>
-													  <input type='hidden' name='question_id[]' value='$question1'>	
-													  <input type='text' name='answer[]' value='$ans'>
-													</div>
-												      ";
-												      $i++;
-												 
-											  }
-											}
-											if ($row['question_type']=="Matching Type")
-											{
-												echo "
-												<div class='col-lg-12'>
-												  <div class='col-md-4'>
-												    <h4>Answer</h4>
-												  </div>
-												  <div class='col-md-4'>
-												    <h4>COLUMN A</h4>
-												  </div>
-												  <div class='col-md-4'>
-												   <h4>COLUMN B</h4>
-												  </div>
-												</div>"; 
-												$i=0;
-											while ($row4=mysqli_fetch_array($query1)){	
-											    $choices=$row4['choices'];
-											    $cola=$row4['cola'];
-											    $letter=$row4['letter'];
-											    $answer=$row['answer'];
-											    
-											    echo "
-											    <div class='col-lg-12'>
-											      <div class='col-md-4'>
-												";
-												$answer1=explode(",",$answer);
-												echo "	<input type='text' name='answer[]' value='$answer1[$i]'>  
-												<input type='hidden' name='answer_id[]' value='$row4[answer_id]'>
-											      </div>
-											      <div class='col-md-4'>
-												$cola
-											      </div>
-											      <div class='col-md-4'>
-											      $letter.
-												$choices
-											      </div>
-											    </div><br>
-											    ";$i++;
-												  }
-											}
+											
 								         ?>	
                     <div class="footer">
                     <?php 
