@@ -32,14 +32,11 @@ include('../includes/dbcon.php');
 	
 		    $_SESSION['question_id']=$row3['question_id'];
 		    $_SESSION['quiz_id']=$qid;
-
-			
-		  	
 	
 ?>
 <script>
 <!--
-window.open("take_quiz.php","fs","fullscreen=yes,width=1400,height=840")
+window.open("take_quiz.php","fs","fullscreen=yes,width=1400,height=800")
 document.location='quiz.php'
 //-->
 </script>

@@ -24,7 +24,10 @@ $query=mysqli_query($con,"select * from admin where admin_email='$email' and adm
 				$_SESSION['admin_pic']='default.gif';
 				$_SESSION['admin_name']=$first." ".$last;
 			  
-			  		echo "<script type='text/javascript'>document.location='home.php'</script>";
+				$id=$_SESSION['id'];
+				  $date=date("Y-m-d H:i");
+				          mysqli_query($con,"INSERT INTO history_logs(log,log_date,member_id) VALUES('successfully logged in!','$date','$id')")or die(mysqli_error($con)); 
+				  echo "<script type='text/javascript'>document.location='home.php'</script>";
 			  	}
 				  
 ?>

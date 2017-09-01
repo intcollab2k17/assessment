@@ -28,7 +28,7 @@ date_default_timezone_set("Asia/Manila");
 		
 		<!-- BEGIN CONTENT -->
 		<div class="page-content-wrapper">
-			<div class="page-content" id="fullscreen" style="margin-top: -100px">
+			<div class="page-content" id="fullscreen" style="margin-top: -20px">
 				<!-- BEGIN PAGE CONTENT-->
 <?php
 	include('../includes/dbcon.php');
@@ -92,6 +92,7 @@ date_default_timezone_set("Asia/Manila");
 		      $question_id=$row['question_id'];
 			  $stud_answer=$row['stud_answer'];
 		      $i++;
+
 ?>					
 					<form method="post" action="quiz_update.php" name="finish1" id="finish1">
 						<input type="hidden" value="<?php echo $quiz_id;?>" name="quiz_id">
@@ -198,13 +199,22 @@ date_default_timezone_set("Asia/Manila");
 											if ($row['question_type']=="Enumeration")
 											{
 											  $i=0;
-											  while ($row3=mysqli_fetch_array($query1)){
-											      $choices=$row3['choices'];
-											      $answer=$row['answer'];
-												 
+											 $qt=$row['question_type']; 
+
+											  $queryen=mysqli_query($con,"select * from answer natural join question where question_type='Enumeration' and quiz_id='$quiz_id'")or die(mysqli_error($con));
+
+													while($rowen=mysqli_fetch_array($queryen)){
+												 		$question1=$rowen['question_id']; 
+
+												 		$queryan=mysqli_query($con,"select * from question_order where question_id='$question1' and quiz_id='$quiz_id' and member_id='$sid'")or die(mysqli_error($con));
+
+														$rowan=mysqli_fetch_array($queryan);
+												 		$ans=$rowan['answer']; 
+
 												      echo "
 													<div class='col-md-12'>
-													  <input type='text' name='answer' value='$answer'>
+													  <input type='hidden' name='question_id[]' value='$question1'>	
+													  <input type='text' name='answer[]' value='$ans'>
 													</div>
 												      ";
 												      $i++;

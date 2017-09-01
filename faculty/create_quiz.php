@@ -225,7 +225,7 @@
 													<?php
 		
 		//$qid=$_REQUEST['qid'];
-		$query=mysqli_query($con,"select * from question where quiz_id='$qid'")or die(mysqli_error($con));
+		$query=mysqli_query($con,"select * from question natural join answer where quiz_id='$qid' group by question_id")or die(mysqli_error($con));
 		$quizcount=mysqli_num_rows($query);
 		if ($quizcount<1)echo "<h3 class='text-red'>No Available Question!</h3>";
 		else {
@@ -235,7 +235,6 @@
                       <tr>
 						<th>Item</th>
                         <th>Type</th>
-                        <th>Instruction</th>
                         <th>Question</th>
                         <th>Points</th>
 						<th>Choices</th>
@@ -248,7 +247,7 @@
 <?php
 		
 		$i=1;
-		
+		$total=0;
 		while ($row=mysqli_fetch_array($query)){
 			$question_id=$row['question_id'];
 
@@ -285,81 +284,40 @@
 						<td><?php echo $i++;?></td>
                         <td><?php echo $row['question_type'];?></td>
                         <?php
-			    if ($row['question_type']=="Matching Type")
-			    {
-			    $cola=mysqli_query($con,"select cola,question_id from answer where question_id='$question_id'")or die(mysqli_error($con));	
-					while ($rowcola=mysqli_fetch_array($cola)){
-					echo "<td>";	
-					echo $row['instruction'];
-					echo "</td>";	
-					echo "<td>";	
-					echo $rowcola['cola'];
-					echo "</td>";	
-					echo "<td>";	
-					echo $row['points'];
-					echo "</td>";	
-					}
-			    }
-			    if ($row['question_type']=="Enumeration")
-			    {
-			    $cola=mysqli_query($con,"select * from answer  where question_id='$question_id'")or die(mysqli_error($con));	
-					while ($rowcola=mysqli_fetch_array($cola)){
-					echo "<td>";	
-					echo $row['instruction'];
-					echo "</td>";	
-					echo "<td>";	
-					echo "</td>";	
-					echo "<td>";	
-					echo $row['points'];
-					echo "</td>";	
-					}
-			    }
 			    
+			    
+					echo "<td>";	
+					echo $row['question']."<br> ".$row['cola'];
+					echo "</td>";	
+
+					echo "<td>";	
+					echo $row['points'];
+					echo "</td>";	
+					echo "<td>";	
+$cola=mysqli_query($con,"select * from answer  where question_id='$question_id'")or die(mysqli_error($con));	
+					
+					while ($rowcola=mysqli_fetch_array($cola)){					
+					echo $rowcola['letter']." ". $rowcola['choices']."<br>";}
+					echo "</td>";	
+					echo "<td>";	
+					echo $row['answer'];
+					echo "</td>";	
+				
 			    	
 			    ?>
 			
              
-			<td>
-				<?php	
-					$query1=mysqli_query($con,"select * from answer where question_id='$question_id'")or die(mysqli_error($con));						
-					while ($row1=mysqli_fetch_array($query1)){?>	
-				<?php echo "<b>".$row1['letter']."</b>"." ".$row1['choices'];?><br>  
-				<?php	}?>
-			</td>
-			<td>
-			  <?php 
-			    $query2=mysqli_query($con,"select * from answer where question_id='$question_id' group by answer order by answer_id asc ")or die(mysqli_error($con));	
-			    while ($row2=mysqli_fetch_array($query2)){
-			    echo $row2['answer'];echo "<br>";}?>
-			</td>
+			
                         <td><a class="btn btn-warning" href="question_update.php?question_id=<?php echo $question_id;?>&qid=<?php echo $qid;?>" data-toggle="tooltip" data-original-title="Update Questions"><i class="glyphicon glyphicon-pencil"> </i></a>
 			<a data-target="#delquestion<?php echo $question_id;?>" data-toggle="modal" data-original-title="Delete Question" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>				
 						</td>
                       </tr>
                       
-<?php }?>                     
+<?php 
+$total=$total+$row['points'];
+}?>                     
                     </tbody>
-                 <?php
-				 $id=$_REQUEST['qid'];  
-			    $points=mysqli_query($con,"select *,SUM(points) as spoints from question
-				where quiz_id='$id' and (question_type='Multiple Choice' or question_type='Modified True or False' or question_type='True or False' or 
-				question_type='Identification')")
-				or die(mysqli_error($con));	
-				  $row4=mysqli_fetch_array($points);
-				      $total=$row4['spoints'];
-				      
-				$mpoints=mysqli_query($con,"select *,SUM(points) as mpoints from question natural join answer
-				where quiz_id='$id' and question_type='Enumeration'")
-				or die(mysqli_error($con));	
-				  $row5=mysqli_fetch_array($mpoints);
-			    
-				$mpoints1=mysqli_query($con,"select *,SUM(points) as mpoints1 from question natural join answer
-				where quiz_id='$id' and question_type='Matching Type'")
-				or die(mysqli_error($con));	
-			    $row6=mysqli_fetch_array($mpoints1);
-						$total=$total+$row5['mpoints']+$row6['mpoints1'];
-						
-						
+            			<?php
                    echo "
                    <tfoot>
                       <tr>

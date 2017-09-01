@@ -64,9 +64,7 @@
     </div>
     <div class="form-actions">
       <button type="submit" class="btn btn-success uppercase" name="login">Login</button>
-      <label class="rememberme check">
-      <input type="checkbox" name="remember" value="1"/>Remember </label>
-      <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
+    
     </div>
     
   </form>

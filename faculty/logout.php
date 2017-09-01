@@ -35,7 +35,9 @@
 <div style="width:100%;text-align:center;vertical-align:bottom">
 		<div class="loader"></div>
 <?php
-
+$id=$_SESSION['id'];
+$date=date("Y-m-d H:i");
+          mysqli_query($con,"INSERT INTO history_logs(log,log_date,member_id) VALUES('has logged out!','$date','$id')")or die(mysqli_error($con)); 
  session_destroy();
 	
  echo '<meta http-equiv="refresh" content="2;url=../index.php">';

@@ -19,7 +19,7 @@
 			mysqli_query($con,"INSERT INTO answer(question_id,choices,answer,letter) VALUES('$id','$choice','$answer','$letter[$i]')")or die(mysqli_error($con));
 			$i++;
 		}
-		mysqli_query($con,"UPDATE quiz SET quiz_total=quiz_total+'$pts' where quiz_id='$quiz'")or die(mysqli_error($con)); 
+		
 	}
 	if ($type=="True or False")
 	{
@@ -30,7 +30,7 @@
 		mysqli_query($con,"INSERT INTO answer(question_id,choices,answer) VALUES('$id','True','$answer')")or die(mysqli_error($con));
 		mysqli_query($con,"INSERT INTO answer(question_id,choices,answer) VALUES('$id','False','$answer')")or die(mysqli_error($con));
 
-		mysqli_query($con,"UPDATE quiz SET quiz_total=quiz_total+'$pts' where quiz_id='$quiz'")or die(mysqli_error($con)); 
+	
 	}
 	if ($type=="Modified True or False")
 	{
@@ -47,7 +47,7 @@
 		  $answer1 = $_POST['answermtf'];
 		  mysqli_query($con,"INSERT INTO answer(question_id,answer) VALUES('$id','$answer1')")or die(mysqli_error($con));
 		  }
-		  mysqli_query($con,"UPDATE quiz SET quiz_total=quiz_total+'$pts' where quiz_id='$quiz'")or die(mysqli_error($con)); 
+		 
 	}
 	if ($type=="Identification")
 	{
@@ -56,7 +56,7 @@
 		
 		$id = mysqli_insert_id($con);
 		mysqli_query($con,"INSERT INTO answer(question_id,answer,choices) VALUES('$id','$answer1','')")or die(mysqli_error($con));
-		mysqli_query($con,"UPDATE quiz SET quiz_total=quiz_total+'$pts' where quiz_id='$quiz'")or die(mysqli_error($con)); 
+		
 		
 	}
 	if ($type=="Enumeration")
@@ -68,13 +68,13 @@
 		foreach($answer as $choice1) { 
 			if ($choice1<>"")
 			{
-				mysqli_query($con,"INSERT INTO question(quiz_id,question,question_type,points,instruction) VALUES('$quiz','$question','$type','$pts','$question')")or die(mysqli_error($con)); 
+				mysqli_query($con,"INSERT INTO question(quiz_id,question,question_type,points) VALUES('$quiz','$question','$type','$pts')")or die(mysqli_error($con)); 
 
 					$id = mysqli_insert_id($con);
 					$total=$pts*$i;
 					mysqli_query($con,"INSERT INTO answer(question_id,answer) VALUES('$id','$choice1')")or die(mysqli_error($con));
 
-					mysqli_query($con,"UPDATE quiz SET quiz_total=quiz_total+'$total' where quiz_id='$quiz'")or die(mysqli_error($con)); 
+				
 					$i++;
 			}
 		}
@@ -97,7 +97,7 @@
 		    $c = $choice1[$ii];
 		    $a = $answer2[$ii];
 		    
-			mysqli_query($con,"INSERT INTO question(quiz_id,question,question_type,points,instruction) VALUES('$quiz','$question','$type','$pts','$question')")or die(mysqli_error($con));  
+			mysqli_query($con,"INSERT INTO question(quiz_id,question,question_type,points) VALUES('$quiz','$question','$type','$pts')")or die(mysqli_error($con));  
 
 		
 		$id = mysqli_insert_id($con);    
@@ -106,8 +106,7 @@
 			$ii++;
 			
 		  }
-		$total1=$pts*$ii;
-		    mysqli_query($con,"UPDATE quiz SET quiz_total=quiz_total+'$total1' where quiz_id='$quiz'")or die(mysqli_error($con)); 
+		
 		
 	}
 	

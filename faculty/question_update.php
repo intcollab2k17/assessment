@@ -1,5 +1,5 @@
 <?php include('session.php');
-error_reporting(0);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,13 +42,13 @@ error_reporting(0);
 											<i class="icon-globe theme-font hide"></i>
 											
 <?php
-				    include('../includes/dbcon.php');
 				    
 				    $question_id=$_REQUEST['question_id'];
 				    $qid=$_REQUEST['qid'];
 				    $query=mysqli_query($con,"select * from question where question_id='$question_id'")or die(mysqli_error($con));
 				    	$row=mysqli_fetch_array($query);
 					  //  echo $row['quiz_title'];
+
 
 				  ?>
 											
@@ -72,6 +72,7 @@ error_reporting(0);
 													    
 													  </div> 
 													</div>
+														
 													<div class="col-md-2">
 													  <button class="btn btn-primary" name="update">Save</button>
 													</div><br>
@@ -80,19 +81,17 @@ error_reporting(0);
 												    <div class="col-md-12 col-xs-12">
 														<div class="form-group"><br>
 				  
-				  
-				
 		
-                    <?php
-		      $query1=mysqli_query($con,"select * from answer where question_id='$qid' order by answer_id")or die(mysqli_error());
+              <?php
+		      $query1=mysqli_query($con,"select * from answer where question_id='$question_id' order by answer_id")or die(mysqli_error($con));
 		      
 		      if ($row['question_type']=="Multiple Choice")
-			{
-			while ($row=mysqli_fetch_array($query1)){
-			    $aid=$row['answer_id'];
-			    $letter=$row['letter'];
-			    $choices=$row['choices'];
-			    $answer=$row['answer'];
+				{
+				while ($row1=mysqli_fetch_array($query1)){
+			    $aid=$row1['answer_id'];
+			    $letter=$row1['letter'];
+			    $choices=$row1['choices'];
+			    $answer=$row1['answer'];
 			    if ($letter<>$answer){$checked="";}
 			    else $checked="checked";
 			    			   
@@ -118,9 +117,9 @@ error_reporting(0);
 			}
 			if ($row['question_type']=="True or False")
 			{
-			while ($row=mysqli_fetch_array($query1)){
-			    $choices=$row['choices'];
-			    $answer=$row['answer'];
+			while ($row1=mysqli_fetch_array($query1)){
+			    $choices=$row1['choices'];
+			    $answer=$row1['answer'];
 			    if ($choices==$answer)$checked="checked";
 			    else $checked="0";
 			   
@@ -139,8 +138,8 @@ error_reporting(0);
 			
 			if ($row['question_type']=="Modified True or False")
 			{
-			  $row=mysqli_fetch_array($query1);
-			  $answer=$row['answer'];
+			  $row1=mysqli_fetch_array($query1);
+			  $answer=$row1['answer'];
 			    
 			echo "
 			  <div class='col-md-5 col-xs-12'>
@@ -153,8 +152,8 @@ error_reporting(0);
 			}
 			if ($row['question_type']=="Identification")
 			{
-			$row=mysqli_fetch_array($query1);
-			$answer=$row['answer'];
+			$row1=mysqli_fetch_array($query1);
+			$answer=$row1['answer'];
 			echo "
 			   <div class='col-md-5 col-xs-12'>
 			    <div class='col-md-12 col-xs-12'>
@@ -166,9 +165,9 @@ error_reporting(0);
 			}
 			 if ($row['question_type']=="Enumeration")
 			{
-			while ($row=mysqli_fetch_array($query1)){
-			    $aid=$row['answer_id'];
-			    $answer=$row['answer'];
+			while ($row1=mysqli_fetch_array($query1)){
+			    $aid=$row1['answer_id'];
+			    $answer=$row1['answer'];
 			    
 			    			   
 			echo "
@@ -262,77 +261,7 @@ Profile.init(); // init page demo
         
     });   
 </script>
-<script>
-	jQuery(document).ready(function(){
-		jQuery("#multiple").hide();
-		jQuery("#tf").hide();
-		jQuery("#mtf").hide();	
-		jQuery("#mt").hide();	
-		jQuery("#identification").hide();	
-		jQuery("#enumeration").hide();			
 
-		jQuery("#type").change(function(){	
-			var x = jQuery(this).val();			
-			if(x == 'Multiple Choice') {
-				jQuery("#multiple").show();
-				jQuery("#tf").hide();
-				jQuery("#mtf").hide();
-				jQuery("#mt").hide();
-				jQuery("#identification").hide();
-				jQuery("#enumeration").hide();
-			} else if(x == 'True or False') {
-				jQuery("#multiple").hide();
-				jQuery("#tf").show();
-				jQuery("#mtf").hide();
-				jQuery("#mt").hide();
-				jQuery("#identification").hide();
-				jQuery("#enumeration").hide();
-			} 
-			else if(x == 'Modified True or False') {
-				jQuery("#multiple").hide();
-				jQuery("#tf").hide();
-				jQuery("#mtf").show();
-				jQuery("#mt").hide();
-				jQuery("#identification").hide();
-				jQuery("#enumeration").hide();
-			}
-			else if(x == 'Matching Type') {
-				jQuery("textarea[name='question']").val();
-				jQuery("#multiple").hide();
-				jQuery("#tf").hide();
-				jQuery("#mtf").hide();
-				jQuery("#mt").show();
-				jQuery("#identification").hide();
-				jQuery("#enumeration").hide();
-			}
-			else if(x == 'Identification') {
-				jQuery("#multiple").hide();
-				jQuery("#tf").hide();
-				jQuery("#mtf").hide();
-				jQuery("#mt").hide();
-				jQuery("#identification").show();
-				jQuery("#enumeration").hide();
-			}
-			else if(x == 'Enumeration') {
-				
-				jQuery("#multiple").hide();
-				jQuery("#tf").hide();
-				jQuery("#mtf").hide();
-				jQuery("#mt").hide();
-				jQuery("#identification").hide();
-				jQuery("#enumeration").show();
-			}else {
-				jQuery("#multiple").hide();
-				jQuery("#tf").hide();
-				jQuery("#mtf").hide();
-				jQuery("#mt").hide();
-				jQuery("#identification").hide();
-				jQuery("#enumeration").hide();
-			}
-		});
-		
-	});
-</script>
 <script type="text/javascript">
            function createPetField() {
 	      var input = document.createElement('input');
@@ -363,6 +292,7 @@ function addInput(divName){
           counter++;
      }
 }
+</script>
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

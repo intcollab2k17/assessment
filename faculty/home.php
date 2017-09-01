@@ -121,58 +121,68 @@
 			}
 ?>
 																
-																
-				<!--feedback-->															
+				<!-- /.edit -->
+													<div class="modal fade" id="edit<?php echo $gpid;?>" tabindex="-1" role="dialog" aria-hidden="true">
+														<div class="modal-dialog">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+																	<h4 class="modal-title">Reply Comment</h4>
+																</div>
+																<div class="modal-body">
+																	<!-- BEGIN SAMPLE FORM PORTLET-->
+																<div class="portlet light">
+																	
+																	<div class="portlet-body form">
+																		<form role="form" method="post" action="comment_save.php" enctype='multipart/form-data'>
+													<div class="form-group form-md-line-input form-md-floating-label">
+													<input type="hidden" class="form-control" id="form_control_1" name="gpid" value="<?php echo $gpid;?>" required>
+													</div>
+													<div class="form-group form-md-line-input form-md-floating-label">
+														<input type="text" class="form-control" id="form_control_1" name="comment" required>
+														
+													</div>
+													
+													
+																			
+																		
+																	</div>
+																</div>
+																<!-- END SAMPLE FORM PORTLET-->
+																</div>
+																<div class="modal-footer">
+																	<button type="button" class="btn default" data-dismiss="modal">Close</button>
+																	<button type="submit" class="btn blue" name="update">Save changes</button>
+																</div>
+															</div></form>
+															<!-- /.modal-content -->
+														</div>
+														<!-- /.modal-dialog -->
+													</div>
+													<!-- /.modal -->													
+				<!--feedback-->		
 				<div class="media">
-										<h3>Comments</h3>
+										<h5><a class="btn btn-success" data-toggle="modal" href="#edit<?php echo $gpid;?>">Reply</a></h5>
+<?php 
+$queryc=mysqli_query($con,"select * from comment natural join group_post natural join member where group_post_id='$gpid' order by date_posted desc")or die(mysqli_error($con));
+	while($rowc=mysqli_fetch_array($queryc)){
+	    $comment=$rowc['comment'];
+?>
 										<a href="javascript:;" class="pull-left">
-										<img alt="" src="../../assets/admin/pages/media/blog/9.jpg" class="media-object">
+										<img class="item-pic" src="../images/<?php echo $rowc['member_pic'];?>" style="height: 30px;width: 30px">
+										<a href="" class="item-name primary-link"><?php echo $rowc['member_first']." ".$rowc['member_last'];?>
 										</a>
+										<span class="item-label"><?php echo date('M d, Y h:i A',strtotime($rowc['date_posted']));?>
+										</span>
 										<div class="media-body">
-											<h4 class="media-heading">Media heading <span>
-											5 hours ago / <a href="javascript:;">
-											Reply </a>
-											</span>
-											</h4>
+											
 											<p>
-												 Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+												 <?php echo nl2br($comment);?>
 											</p>
 											<hr>
-											<!-- Nested media object -->
-											<div class="media">
-												<a href="javascript:;" class="pull-left">
-												<img alt="" src="../../assets/admin/pages/media/blog/5.jpg" class="media-object">
-												</a>
-												<div class="media-body">
-													<h4 class="media-heading">Media heading <span>
-													17 hours ago / <a href="javascript:;">
-													Reply </a>
-													</span>
-													</h4>
-													<p>
-														 Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-													</p>
-												</div>
-											</div>
-											<!--end media-->
-											<hr>
-											<div class="media">
-												<a href="javascript:;" class="pull-left">
-												<img alt="" src="../../assets/admin/pages/media/blog/7.jpg" class="media-object">
-												</a>
-												<div class="media-body">
-													<h4 class="media-heading">Media heading <span>
-													2 days ago / <a href="javascript:;">
-													Reply </a>
-													</span>
-													</h4>
-													<p>
-														 Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-													</p>
-												</div>
-											</div>
-											<!--end media-->
+											
 										</div>
+<?php }?>										
 									</div>										
 
 				<!--ffedback-->										
@@ -342,6 +352,7 @@ Profile.init(); // init page demo
         $("#time").hide('slow');
     });   
 </script>
+
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

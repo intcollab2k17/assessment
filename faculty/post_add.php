@@ -12,7 +12,6 @@
 	date_default_timezone_set("Asia/Manila");
 	$date_posted=date('Y-m-d H:i:s');
 	//$date1=date('M d, Y h:i a');
-	$notif="$title on";
 	$name = $_FILES["image"]["name"];
 
 	if ($name<>"")
@@ -55,8 +54,14 @@
 	    	
 	    	$pid=mysqli_insert_id($con);
 	    	foreach($group as $chk1) {	
+
 				    mysqli_query($con,"INSERT INTO group_post(post_id,group_id,due_date) VALUES('$pid','$chk1','$due')")or die(mysqli_error($con));
 
+				    	$query5=mysqli_query($con,"select * from `group` where group_id='$chk1'")or die(mysqli_error($con));
+				    		$row5=mysqli_fetch_array($query5);
+				    			$cys=$row5['cys'];
+
+				    	$notif="Posted $title on $cys";
 						$link="view_group.php?gid=$chk1";	   
 				    	mysqli_query($con,"INSERT INTO notif(notif,group_id,link,status) VALUES('$notif','$chk1','$link','student')")or die(mysqli_error($con));
 
