@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2017 at 09:16 AM
+-- Generation Time: Sep 01, 2017 at 04:41 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -62,17 +62,38 @@ CREATE TABLE `answer` (
 --
 
 INSERT INTO `answer` (`answer_id`, `question_id`, `answer`, `choices`, `letter`, `cola`) VALUES
-(76, 43, 'A', '', '', ''),
-(77, 44, 'b', '', '', ''),
-(78, 45, 'c', '', '', ''),
-(79, 46, 'd', '', '', ''),
-(80, 47, 'e', '', '', ''),
-(81, 48, 'A', '1', 'A', ''),
-(82, 48, 'A', '2', 'B', ''),
-(83, 48, 'A', '3', 'C', ''),
-(84, 48, 'A', '4', 'D', ''),
-(85, 49, 'True', 'True', '', ''),
-(86, 49, 'True', 'False', '', '');
+(127, 79, 'TPS', '', '', ''),
+(128, 80, 'IS', '', '', ''),
+(129, 81, 'DSS', '', '', ''),
+(130, 82, 'EIS', '', '', ''),
+(131, 83, 'SSS', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `comment_id` int(11) NOT NULL,
+  `group_post_id` int(11) NOT NULL,
+  `comment` varchar(1000) NOT NULL,
+  `date_posted` datetime NOT NULL,
+  `member_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`comment_id`, `group_post_id`, `comment`, `date_posted`, `member_id`) VALUES
+(4, 3, 'test', '2017-08-30 12:45:34', 19),
+(5, 3, 'test reply', '2017-08-30 12:51:34', 19),
+(6, 4, 'Please download and read', '2017-08-30 12:54:58', 19),
+(7, 4, 'copy miss', '2017-08-30 13:20:16', 19),
+(8, 4, 'ok miss', '2017-08-30 13:20:33', 2),
+(9, 3, 'student test reply', '2017-08-30 13:28:17', 19),
+(10, 3, 'student test reply', '2017-08-30 13:28:39', 2);
 
 -- --------------------------------------------------------
 
@@ -111,7 +132,7 @@ CREATE TABLE `enrol` (
 --
 
 INSERT INTO `enrol` (`enrol_id`, `group_id`, `member_id`, `status`) VALUES
-(20, 3, 2, 'pending');
+(20, 3, 2, 'approved');
 
 -- --------------------------------------------------------
 
@@ -135,8 +156,7 @@ CREATE TABLE `grade` (
 --
 
 INSERT INTO `grade` (`grade_id`, `member_id`, `group_id`, `score`, `total`, `type`, `post_id`, `quiz_id`) VALUES
-(24, 2, 1, 2, 2, 'quiz', 0, 13),
-(25, 2, 3, 5, 5, 'quiz', 0, 17);
+(38, 2, 3, 1, 5, 'quiz', 0, 18);
 
 -- --------------------------------------------------------
 
@@ -183,7 +203,11 @@ CREATE TABLE `group_post` (
 INSERT INTO `group_post` (`group_post_id`, `post_id`, `group_id`, `due_date`) VALUES
 (1, 1, 1, '1970-01-01 16:20:00'),
 (2, 2, 1, '1970-01-01 16:20:00'),
-(3, 4, 3, '1970-01-01 14:50:00');
+(3, 4, 3, '1970-01-01 14:50:00'),
+(4, 5, 3, '1970-01-01 12:55:00'),
+(5, 6, 3, '1970-01-01 13:30:00'),
+(6, 7, 3, '1970-01-01 13:35:00'),
+(7, 8, 3, '1970-01-01 13:40:00');
 
 -- --------------------------------------------------------
 
@@ -213,7 +237,8 @@ INSERT INTO `group_quiz` (`group_quiz_id`, `quiz_id`, `group_id`, `group_quiz_st
 (7, 14, 3, 'inactive', '2017-08-19', '13:00:00'),
 (8, 15, 3, 'inactive', '2017-12-04', '09:05:00'),
 (9, 16, 3, 'inactive', '2017-12-04', '09:05:00'),
-(10, 17, 3, 'active', '2017-04-12', '09:05:00');
+(10, 17, 3, 'active', '2017-04-12', '09:05:00'),
+(11, 18, 3, 'active', '2017-01-09', '17:00:00');
 
 -- --------------------------------------------------------
 
@@ -244,7 +269,26 @@ INSERT INTO `history_logs` (`log_id`, `log`, `log_date`, `member_id`) VALUES
 (9, 'successfully logged in!', '2017-08-21 08:21:00', 2),
 (10, 'successfully logged in!', '2017-08-21 08:49:00', 19),
 (11, 'successfully logged in!', '2017-08-21 08:58:00', 2),
-(12, 'successfully logged in!', '2017-08-21 09:15:00', 19);
+(12, 'successfully logged in!', '2017-08-21 09:15:00', 19),
+(13, 'successfully logged in!', '2017-08-28 16:27:00', 19),
+(14, 'successfully logged in!', '2017-08-29 17:15:00', 19),
+(15, 'successfully logged in!', '2017-08-30 06:01:00', 19),
+(16, 'successfully logged in!', '2017-08-30 07:01:00', 2),
+(17, 'successfully logged in!', '2017-08-30 07:05:00', 19),
+(18, 'successfully logged in!', '2017-08-30 07:21:00', 19),
+(19, 'successfully logged in!', '2017-08-30 09:19:00', 2),
+(20, 'successfully logged in!', '2017-08-31 21:47:00', 2),
+(21, 'successfully logged in!', '2017-08-31 21:49:00', 19),
+(22, 'successfully logged in!', '2017-09-01 03:30:00', 19),
+(24, 'successfully logged in!', '2017-09-01 03:49:00', 19),
+(25, 'successfully logged in!', '2017-09-01 09:49:00', 19),
+(26, 'successfully logged in!', '2017-09-01 09:50:00', 19),
+(27, 'successfully logged in!', '2017-09-01 03:50:00', 19),
+(28, 'has logged out!', '2017-09-01 09:50:00', 19),
+(29, 'successfully logged in!', '2017-09-01 03:50:00', 2),
+(30, 'has logged out!', '2017-09-01 09:51:00', 2),
+(31, 'has logged out!', '2017-09-01 04:05:00', 0),
+(32, 'successfully logged in!', '2017-09-01 04:08:00', 19);
 
 -- --------------------------------------------------------
 
@@ -278,9 +322,10 @@ INSERT INTO `member` (`member_id`, `id_no`, `member_last`, `member_first`, `memb
 (10, '0', 'g', 'g', '', 'BSIS 1-A', 'e@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '2017-06-24', 'screenshot-1.png', 'Student', 1, 0),
 (11, 'JAP10141989', 'Pun-an', 'Joanna', '', '', 'joanna@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-06-26', 'default.gif', 'Faculty', 1, 0),
 (12, '0', 'ken', 'ken', '', 'BSIS 1-B', 'ken@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-06-26', 'default.gif', 'student', 1, 0),
-(13, '0', 'Aboy', 'Kenneth', '', '', '', '', '0000-00-00', '', 'Student', 0, 0),
+(13, 'KAA08251992', 'Aboy', 'Kenneth', '', 'BSIS 1-A', 'kaye@y.c', '', '0000-00-00', '', 'Student', 0, 0),
 (15, '0', 'Sim', 'Lavern', '', 'BSIS 4A', '', '', '0000-00-00', '', 'Student', 0, 0),
-(19, 'RJM11021990', 'Morante', 'Ruby', '', '', 'ruby@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-08-21', 'default.gif', 'Faculty', 1, 0);
+(19, 'RJM11021990', 'Morante', 'Ruby', '', '', 'ruby@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-08-21', 'default.gif', 'Faculty', 1, 0),
+(20, 'jhjh', 'jhjh', 'jhjh', '', 'BSIS 1-A', 'emoblazz@gmail.com', '', '0000-00-00', 'default.gif', 'student', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -326,7 +371,12 @@ INSERT INTO `notif` (`notif_id`, `notif`, `link`, `group_id`, `status`) VALUES
 (15, 'Kaye Cueva requests to join the group', 'view_group.php?gid=3', 3, 'faculty'),
 (16, 'Kaye Cueva requests to join the group', 'view_group.php?gid=3', 3, 'faculty'),
 (17, 'Kaye Cueva requests to join the group', 'view_group.php?gid=3', 3, 'faculty'),
-(18, 'Kaye Cueva requests to join the group', 'view_group.php?gid=3', 3, 'faculty');
+(18, 'Kaye Cueva requests to join the group', 'view_group.php?gid=3', 3, 'faculty'),
+(19, 'Notes on', 'view_group.php?gid=3', 3, 'student'),
+(20, 'Request to join group approved', 'view_group.php?gid=3', 3, 'student'),
+(21, 'jjjj on', 'view_group.php?gid=3', 3, 'student'),
+(22, 'Assign on Array', 'view_group.php?gid=3', 3, 'student'),
+(23, 'dddd on BSIS 1-B', 'view_group.php?gid=3', 3, 'student');
 
 -- --------------------------------------------------------
 
@@ -348,7 +398,12 @@ CREATE TABLE `notif_stat` (
 INSERT INTO `notif_stat` (`notif_stat_id`, `notif_id`, `member_id`, `read_status`) VALUES
 (17, 15, 0, 0),
 (19, 17, 0, 0),
-(20, 18, 19, 1);
+(20, 18, 19, 1),
+(21, 19, 2, 1),
+(22, 20, 2, 0),
+(23, 21, 2, 0),
+(24, 22, 2, 0),
+(25, 23, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -375,7 +430,11 @@ INSERT INTO `post` (`post_id`, `post_date`, `post_content`, `post_file`, `member
 (1, '2017-08-19 16:18:20', 'lklk', 'Book1.csv', 1, 'klkl', 0, 'post'),
 (2, '2017-08-19 16:18:33', 'ffff', 'Blood Donor History Questionnaire.pdf', 1, 'dddffff', 0, 'post'),
 (3, '0000-00-00 00:00:00', '', '', 2, '', 0, 'post'),
-(4, '2017-08-21 14:49:39', 'kljl', '', 19, 'sdsd', 0, 'post');
+(4, '2017-08-21 14:49:39', 'kljl', '', 19, 'sdsd', 0, 'post'),
+(5, '2017-08-30 12:54:31', 'Chapter 1 Notes', 'Book1.csv', 19, 'Notes', 0, 'post'),
+(6, '2017-08-30 13:32:46', 'kkk', '', 19, 'jjjj', 0, 'post'),
+(7, '2017-08-30 13:34:52', 'khjh', '', 19, 'Assign', 0, 'post'),
+(8, '2017-08-30 13:38:19', 'dd', '', 19, 'dddd', 0, 'post');
 
 -- --------------------------------------------------------
 
@@ -388,22 +447,27 @@ CREATE TABLE `question` (
   `quiz_id` int(11) NOT NULL,
   `question` longtext NOT NULL,
   `question_type` varchar(50) NOT NULL,
-  `points` int(3) NOT NULL,
-  `instruction` varchar(1000) NOT NULL
+  `points` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `question`
 --
 
-INSERT INTO `question` (`question_id`, `quiz_id`, `question`, `question_type`, `points`, `instruction`) VALUES
-(43, 12, 'adada', 'Enumeration', 1, 'adada'),
-(44, 12, 'adada', 'Enumeration', 1, 'adada'),
-(45, 12, 'adada', 'Enumeration', 1, 'adada'),
-(46, 12, 'adada', 'Enumeration', 1, 'adada'),
-(47, 12, 'adada', 'Enumeration', 1, 'adada'),
-(48, 13, 'ff', 'Multiple Choice', 2, ''),
-(49, 17, 'SI Kayang gwapa kag abna?', 'True or False', 5, '');
+INSERT INTO `question` (`question_id`, `quiz_id`, `question`, `question_type`, `points`) VALUES
+(59, 17, 'Gwapa ko', 'True or False', 1),
+(60, 17, 'kkhj', 'Multiple Choice', 1),
+(61, 17, 'TPS', 'Identification', 1),
+(73, 18, 'Types of IS', 'Enumeration', 1),
+(74, 18, 'Types of IS', 'Enumeration', 1),
+(75, 18, 'Types of IS', 'Enumeration', 1),
+(76, 18, 'Types of IS', 'Enumeration', 1),
+(77, 18, 'Types of IS', 'Enumeration', 1),
+(79, 18, 'Types of IS', 'Enumeration', 1),
+(80, 18, 'Types of IS', 'Enumeration', 1),
+(81, 18, 'Types of IS', 'Enumeration', 1),
+(82, 18, 'Types of IS', 'Enumeration', 1),
+(83, 18, 'Types of IS', 'Enumeration', 1);
 
 -- --------------------------------------------------------
 
@@ -423,14 +487,6 @@ CREATE TABLE `question_order` (
   `group_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `question_order`
---
-
-INSERT INTO `question_order` (`order_id`, `member_id`, `question_id`, `q_order`, `answer`, `answer_status`, `quiz_id`, `q_score`, `group_id`) VALUES
-(56, 2, 48, '1', 'A', 1, 13, 2, 1),
-(57, 2, 49, '1', 'True', 1, 17, 5, 3);
-
 -- --------------------------------------------------------
 
 --
@@ -442,21 +498,21 @@ CREATE TABLE `quiz` (
   `quiz_title` varchar(100) NOT NULL,
   `quiz_instruction` varchar(1000) NOT NULL,
   `member_id` int(11) NOT NULL,
-  `quiz_duration` varchar(10) NOT NULL,
-  `quiz_total` int(11) NOT NULL
+  `quiz_duration` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `quiz`
 --
 
-INSERT INTO `quiz` (`quiz_id`, `quiz_title`, `quiz_instruction`, `member_id`, `quiz_duration`, `quiz_total`) VALUES
-(12, 'Quiz 1', 'Sample', 1, '1', 5),
-(13, 'fdddd', 'dfd', 1, '1', 2),
-(14, 'Quiz 1', 'mjkjk', 19, '1', 0),
-(15, 'kjkj', 'kjk', 19, '1', 0),
-(16, 'kjkj', 'kjk', 19, '1', 0),
-(17, 'kjkj', 'kjk', 19, '1', 5);
+INSERT INTO `quiz` (`quiz_id`, `quiz_title`, `quiz_instruction`, `member_id`, `quiz_duration`) VALUES
+(12, 'Quiz 1', 'Sample', 1, '1'),
+(13, 'fdddd', 'dfd', 1, '1'),
+(14, 'Quiz 1', 'mjkjk', 19, '1'),
+(15, 'kjkj', 'kjk', 19, '1'),
+(16, 'kjkj', 'kjk', 19, '1'),
+(17, 'kjkj', 'kjk', 19, '10'),
+(18, 'atchi', 'atchi', 19, '5');
 
 -- --------------------------------------------------------
 
@@ -471,14 +527,6 @@ CREATE TABLE `quiz_result` (
   `quiz_taken` date NOT NULL,
   `grade_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `quiz_result`
---
-
-INSERT INTO `quiz_result` (`quiz_result_id`, `quiz_id`, `member_id`, `quiz_taken`, `grade_id`) VALUES
-(24, 13, 2, '2017-08-19', 24),
-(25, 17, 2, '2017-08-21', 25);
 
 -- --------------------------------------------------------
 
@@ -559,6 +607,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `answer`
   ADD PRIMARY KEY (`answer_id`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`comment_id`);
 
 --
 -- Indexes for table `cys`
@@ -687,7 +741,12 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `cys`
 --
@@ -702,7 +761,7 @@ ALTER TABLE `enrol`
 -- AUTO_INCREMENT for table `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `group`
 --
@@ -712,22 +771,22 @@ ALTER TABLE `group`
 -- AUTO_INCREMENT for table `group_post`
 --
 ALTER TABLE `group_post`
-  MODIFY `group_post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `group_post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `group_quiz`
 --
 ALTER TABLE `group_quiz`
-  MODIFY `group_quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `group_quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `history_logs`
 --
 ALTER TABLE `history_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `notes`
 --
@@ -737,37 +796,37 @@ ALTER TABLE `notes`
 -- AUTO_INCREMENT for table `notif`
 --
 ALTER TABLE `notif`
-  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `notif_stat`
 --
 ALTER TABLE `notif_stat`
-  MODIFY `notif_stat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `notif_stat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 --
 -- AUTO_INCREMENT for table `question_order`
 --
 ALTER TABLE `question_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 --
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `quiz_result`
 --
 ALTER TABLE `quiz_result`
-  MODIFY `quiz_result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `quiz_result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `subject`
 --
