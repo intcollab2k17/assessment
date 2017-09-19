@@ -78,24 +78,25 @@ $query=mysqli_query($con,"select * from `group` natural join subject where group
 	
 	$id=$_SESSION['id'];
 	
-	$query1=mysqli_query($con,"select * from post natural join group_post natural join `group` natural join subject where group_id='$gid' order by post_date desc")or die(mysqli_error());
+	$query1=mysqli_query($con,"select * from post natural join group_post natural join `group` natural join subject where group_id='$gid' order by post_date desc")or die(mysqli_error($con));
 		
 		$countassign=mysqli_num_rows($query1);
 		if ($countassign<1) echo "<h4 class='text-red'>You have not created any post yet!</h4>";
-			while($row1=mysqli_fetch_array($query1))
+			while($row2=mysqli_fetch_array($query1))
 			{
-			$pid=$row1['post_id'];	
-			$cys=$row1['cys'];	
-			$subject=$row1['subject_code'];	
-			$gid=$row1['group_id'];	
-			$due=$row1['due_date'];
-			$gpid=$row1['group_post_id'];
-			$file="uploads/$row1[post_file]";
+			$pid=$row2['post_id'];	
+			$cys=$row2['cys'];	
+			$subject=$row2['subject_code'];	
+			$gid=$row2['group_id'];	
+			$due=$row2['due_date'];
+			$post_date=$row2['post_date'];
+			$gpid=$row2['group_post_id'];
+			$file="uploads/$row2[post_file]";
 			$ext = pathinfo($file, PATHINFO_EXTENSION);	
 			include("ext.php");		
 
-			$member_id=$row1['member_id'];	
-			$gpid=$row1['group_post_id'];	
+			$member_id=$row2['member_id'];	
+			$gpid=$row2['group_post_id'];	
 
 			$query=mysqli_query($con,"select * from member where member_id='$member_id'")or die(mysqli_error());
 		
@@ -104,15 +105,15 @@ $query=mysqli_query($con,"select * from `group` natural join subject where group
 														<div class="item">
 															<div class="item-head">
 																<div class="item-details">
-																	<img class="item-pic" src="../images/<?php echo $row['member_pic'];?>">
+																	<img class="item-pic" src="../images/<?php echo $row2['member_pic'];?>">
 																	<a href="" class="item-name primary-link"><?php echo $_SESSION['name'];?></a>
-																	<span class="item-label"><?php echo date('M d, Y h:i A',strtotime($row1['post_date']));?></span>
+																	<span class="item-label"><?php echo date('M d, Y h:i A',strtotime($row2['post_date']));?></span>
 																</div>
 															
 															</div>
 															
 															<div class="item-body">
-																 <h4><?php echo $row1['post_title'];?>
+																 <h4><?php echo $row2['post_title'];?>
 																 <i class="icon-action-redo font-blue"></i> 
 																<a href="view_group.php?gid=<?php echo $gid;?>">
 																	<div class="profile-usertitle-job btn btn-circle green-haze btn-sm">
@@ -120,7 +121,7 @@ $query=mysqli_query($con,"select * from `group` natural join subject where group
 																	</div>
 																</a>
 																</h4>
-																 <p><?php echo $row1['post_content'];?></p>
+																 <p><?php echo $row2['post_content'];?></p>
 <?php
 	
 	$query2=mysqli_query($con,"select * from post where post_id='$pid'")or die(mysqli_error());

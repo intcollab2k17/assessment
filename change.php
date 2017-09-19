@@ -9,6 +9,6 @@
 
             echo "<script type='text/javascript'>alert('Password successfully changed! You may now login to your account.');</script>";
             echo "<script>document.location='index.php'</script>";
-         }
+         
    
 ?>    
